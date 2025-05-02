@@ -1,0 +1,61 @@
+import Image from "next/image"
+import Link from "next/link"
+import { MapPin, ChevronRight } from "lucide-react"
+
+export interface HackathonCardProps {
+  id: string
+  date: string
+  title: string
+  description: string
+  reward: {
+    amount: number
+    currency: string
+  }
+  location: string
+  imageUrl: string
+}
+
+export default function HackathonCard({
+  id,
+  date,
+  title,
+  description,
+  reward,
+  location,
+  imageUrl,
+}: HackathonCardProps) {
+  return (
+    <Link href={`/hackathons/${id}`} className="block">
+      <div className="rounded-xl p-6 bg-[#E2E2E2B2]/70 shadow-[inset_0_0_8px_rgba(13,83,221,0.2)] hover:shadow-[inset_0_0_12px_rgba(13,83,221,0.25)] transition-all duration-300">
+        <div className="flex gap-6">
+          <div className="flex-shrink-0 w-20 h-20 rounded-full overflow-hidden bg-white">
+            <Image
+              src={imageUrl || "/placeholder.svg?height=80&width=80"}
+              alt={title}
+              width={80}
+              height={80}
+              className="object-cover"
+            />
+          </div>
+          <div className="flex-1">
+            <div className="text-sm text-gray-500 mb-1">{date}</div>
+            <h3 className="text-xl font-bold mb-2 text-[#101828]">{title}</h3>
+            <p className="text-sm text-[#344054] mb-3 line-clamp-3">{description}</p>
+            <div className="flex items-center text-primary font-bold mb-2 text-lg">
+              {reward.amount} {reward.currency}
+            </div>
+            <div className="flex items-center text-sm text-gray-500">
+              <MapPin className="h-4 w-4 mr-1" />
+              {location}
+            </div>
+          </div>
+          <div className="self-center">
+            <div className="w-8 h-8 flex items-center justify-center">
+              <ChevronRight className="h-5 w-5 text-gray-500" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </Link>
+  )
+}
