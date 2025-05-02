@@ -166,4 +166,13 @@ export default function BountiesPage() {
                 ))}
               </div>
 
-\
+              <button className="w-full bg-primary text-white py-2 rounded-lg hover:bg-primary/90 transition-colors">
+                View Details
+              </button>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
