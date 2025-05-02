@@ -16,13 +16,15 @@ export default function FilterTabs({ categories, onFilterChange }: FilterTabsPro
   }
 
   return (
-    <div className="flex flex-wrap gap-2 mb-6">
+    <div className="flex flex-wrap gap-3 mb-8">
       {categories.map((category) => (
         <button
           key={category}
           onClick={() => handleCategoryChange(category)}
-          className={`px-6 py-3 rounded-lg text-sm font-semibold transition-all duration-150 ease-in-out ${
-            activeCategory === category ? "bg-[#93B7FF3D] text-[#344054]" : "border border-[#D0D5DD] text-[#344054]"
+          className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-150 ease-in-out ${
+            activeCategory === category 
+              ? "bg-[#EDF2FF] text-[#0D53DD] border border-[#0D53DD]" 
+              : "bg-[#F2F4F7] text-[#344054] border border-transparent hover:bg-[#E4E7EC]"
           }`}
         >
           {category}

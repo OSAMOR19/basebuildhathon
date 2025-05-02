@@ -49,7 +49,7 @@ export default function Header() {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
           <Link href="/hackathons" className="nav-link">
-            Hackathons
+            Buildhathons
           </Link>
           <Link href="/bounties" className="nav-link">
             Bounties
@@ -58,7 +58,7 @@ export default function Header() {
             Grants
           </Link>
           <Link href="/projects" className="nav-link">
-            Projects
+           Jobs
           </Link>
           <Link href="/about" className="nav-link">
             About

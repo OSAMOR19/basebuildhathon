@@ -105,8 +105,8 @@ export default function BountiesPage() {
     activeFilter === "All" ? bountiesData : bountiesData.filter((bounty) => bounty.tags.includes(activeFilter))
 
   return (
-    <div className="pt-20">
-      <div className="container mx-auto px-4 py-12">
+    <div className="pt-[100px] max-w-[1280px] mx-auto px-6">
+      <div className="mb-12">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-extrabold mb-4">Bounties on BASE</h1>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -115,12 +115,16 @@ export default function BountiesPage() {
           </p>
         </div>
 
-        <div className="flex flex-wrap gap-2 mb-8 justify-center">
+        <div className="flex flex-wrap gap-3 mb-8 justify-center">
           {filters.map((filter) => (
             <button
               key={filter}
               onClick={() => setActiveFilter(filter)}
-              className={`filter-pill ${activeFilter === filter ? "active" : "inactive"}`}
+              className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-150 ease-in-out ${
+                activeFilter === filter 
+                  ? "bg-[#EDF2FF] text-[#0D53DD] border border-[#0D53DD]" 
+                  : "bg-[#F2F4F7] text-[#344054] border border-transparent hover:bg-[#E4E7EC]"
+              }`}
             >
               {filter}
             </button>
@@ -147,8 +151,8 @@ export default function BountiesPage() {
               <p className="text-sm text-gray-600 mb-4">{bounty.description}</p>
 
               <div className="flex items-center mb-3">
-                <DollarSign className="h-4 w-4 text-primary mr-2" />
-                <span className="text-lg font-semibold text-primary">
+                <DollarSign className="h-4 w-4 text-[#0D53DD] mr-2" />
+                <span className="text-lg font-semibold text-[#0D53DD]">
                   {bounty.reward.amount} {bounty.reward.currency}
                 </span>
               </div>
@@ -166,7 +170,7 @@ export default function BountiesPage() {
                 ))}
               </div>
 
-              <button className="w-full bg-primary text-white py-2 rounded-lg hover:bg-primary/90 transition-colors">
+              <button className="w-full bg-[#0D53DD] text-white py-2.5 rounded-full hover:bg-[#0D53DD]/90 transition-colors text-sm font-medium">
                 View Details
               </button>
             </div>

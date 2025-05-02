@@ -8,8 +8,9 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 
 export default function ApplyPage() {
-  const params = useParams()
-  const grantId = params?.id as string
+  const params = useParams();
+  // Handle the case where params might be null
+  const grantId = params ? (params.id as string) : '';
   
   const [formData, setFormData] = useState({
     name: "",

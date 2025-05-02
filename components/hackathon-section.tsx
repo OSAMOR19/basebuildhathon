@@ -10,15 +10,15 @@ interface HackathonSectionProps {
 
 export default function HackathonSection({ title, hackathons, viewAllLink }: HackathonSectionProps) {
   return (
-    <section className="py-8">
-      <div className="flex justify-between items-center mb-6">
-        <button className="bg-[#175CF7] text-white rounded-lg px-6 py-3 text-sm font-semibold">{title}</button>
-        <Link href={viewAllLink} className="text-sm text-gray-600 hover:text-primary">
+    <section className="py-10">
+      <div className="flex justify-between items-center mb-8">
+        <button className="bg-[#0D53DD] text-white rounded-full px-8 py-2.5 text-sm font-medium hover:bg-[#0D53DD]/90">{title}</button>
+        <Link href={viewAllLink} className="text-sm font-medium text-[#0D53DD] hover:text-[#0D53DD]/80">
           View all
         </Link>
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-6">
         {hackathons.map((hackathon) => (
           <div key={hackathon.id} className="animate-on-scroll opacity-0">
             <HackathonCard {...hackathon} />

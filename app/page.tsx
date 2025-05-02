@@ -5,6 +5,16 @@ import HeroSection from "@/components/hero-section"
 import FilterTabs from "@/components/filter-tabs"
 import HackathonSection from "@/components/hackathon-section"
 import type { HackathonCardProps } from "@/components/hackathon-card"
+import Image from "next/image"
+import Titan from "@/components/images/titan.svg"
+import Basetittan from "@/components/images/basetitan.svg"
+import Rugpull from "@/components/images/rugpull.svg"
+import Modular from "@/components/images/modular.svg"
+import Paris from "@/components/images/parishack.svg"
+import Penn from "@/components/images/penn.svg"
+import Consensus from "@/components/images/consensus.svg"
+import ETHGlobal from "@/components/images/ethglobal.svg"
+import Blockhain from "@/components/images/blockchainhack.svg"
 
 // Sample data
 const categories = ["All", "Design", "Development", "Content"]
@@ -21,7 +31,7 @@ const ongoingHackathons: HackathonCardProps[] = [
       currency: "USDC",
     },
     location: "California state university, Fullerton, USA",
-    imageUrl: "/placeholder.svg?height=64&width=64",
+    imageUrl: Basetittan,
   },
   {
     id: "2",
@@ -33,7 +43,7 @@ const ongoingHackathons: HackathonCardProps[] = [
       currency: "USDC",
     },
     location: "Kenya, India, Thailand, Singapore, Philippines, and virtually in Buenos Aires",
-    imageUrl: "/placeholder.svg?height=64&width=64",
+    imageUrl: Rugpull,
   },
   {
     id: "3",
@@ -46,7 +56,7 @@ const ongoingHackathons: HackathonCardProps[] = [
       currency: "USDC",
     },
     location: "Virtual",
-    imageUrl: "/placeholder.svg?height=64&width=64",
+    imageUrl: Modular,
   },
 ]
 
@@ -62,7 +72,7 @@ const upcomingHackathons: HackathonCardProps[] = [
       currency: "ETH in total",
     },
     location: "Paris, France",
-    imageUrl: "/placeholder.svg?height=64&width=64",
+    imageUrl: Paris,
   },
   {
     id: "5",
@@ -74,8 +84,8 @@ const upcomingHackathons: HackathonCardProps[] = [
       amount: 1500,
       currency: "USDC",
     },
-    location: "New York City, USA",
-    imageUrl: "/placeholder.svg?height=64&width=64",
+    location: "Philadelphia, Pennsylvania, USA",
+    imageUrl: Penn,
   },
   {
     id: "6",
@@ -88,7 +98,7 @@ const upcomingHackathons: HackathonCardProps[] = [
       currency: "USDC",
     },
     location: "Toronto, Canada",
-    imageUrl: "/placeholder.svg?height=64&width=64",
+    imageUrl: Titan,
   },
 ]
 
@@ -104,7 +114,7 @@ const pastHackathons: HackathonCardProps[] = [
       currency: "USDC",
     },
     location: "Toronto, Canada",
-    imageUrl: "/placeholder.svg?height=64&width=64",
+    imageUrl: Consensus,
   },
   {
     id: "8",
@@ -117,7 +127,7 @@ const pastHackathons: HackathonCardProps[] = [
       currency: "USDC",
     },
     location: "Hybrid (Online and Panama City, Panama)",
-    imageUrl: "/placeholder.svg?height=64&width=64",
+    imageUrl: ETHGlobal,
   },
   {
     id: "9",
@@ -130,7 +140,7 @@ const pastHackathons: HackathonCardProps[] = [
       currency: "USDC",
     },
     location: "Tashkent, Uzbekistan",
-    imageUrl: "/placeholder.svg?height=64&width=64",
+    imageUrl: Blockhain,
   },
 ]
 
@@ -155,11 +165,27 @@ export default function Home() {
   }, [activeFilter])
 
   return (
-    <div className="pt-14">
+    <div className="pt-5">
       <HeroSection />
 
       <div className="max-w-[1280px] mx-auto px-6 py-12">
-        <FilterTabs categories={categories} onFilterChange={setActiveFilter} />
+        <div className="flex justify-center mb-8">
+          <div className="inline-flex flex-wrap gap-3">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setActiveFilter(category)}
+                className={`px-6 py-2 filter-pill text-sm font-medium transition-all duration-150 ease-in-out ${
+                  activeFilter === category 
+                    ? "bg-[#EDF2FF] text-[#0D53DD] border border-[#93B7FF]" 
+                    : "bg-[#F2F4F7] text-[#344054] border border-transparent hover:bg-[#E4E7EC]"
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+        </div>
 
         <HackathonSection title="Ongoing hackathons" hackathons={filteredOngoing} viewAllLink="/hackathons/ongoing" />
 
