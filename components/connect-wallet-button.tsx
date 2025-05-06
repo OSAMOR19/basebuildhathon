@@ -28,7 +28,7 @@ export function ConnectWalletButton({ onConnect }: ConnectWalletButtonProps) {
   return (
     <>
       <button
-        className="bg-[#0D53DD] filter-pill text-white rounded-lg px-6 py-2 font-semibold text-sm hover:bg-[#0A47C2] transition-colors"
+        className="bg-[#DCBD7A] filter-pill text-black rounded-lg px-6 py-2 font-semibold text-sm  transition-colors"
         onClick={handleClick}
         disabled={isLoading}
       >

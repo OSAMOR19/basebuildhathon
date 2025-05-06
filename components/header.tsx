@@ -3,13 +3,15 @@
 import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { ChevronDown, Menu, X } from "lucide-react"
+import { ChevronDown, Menu, X, LogOut } from "lucide-react"
 import { ConnectWalletButton } from "./connect-wallet-button"
+import Profileicon from "@/components/images/baseavatar1.svg"
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isConnected, setIsConnected] = useState(false)
+  const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,53 +30,98 @@ export default function Header() {
     setIsMenuOpen(!isMenuOpen)
   }
 
+  const toggleProfileDropdown = () => {
+    setIsProfileDropdownOpen(!isProfileDropdownOpen)
+  }
+
   const handleConnect = () => {
     setIsConnected(true)
+  }
+
+  const handleLogout = () => {
+    setIsConnected(false)
+    setIsProfileDropdownOpen(false)
   }
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "backdrop-blur-header shadow-sm py-2" : "py-4"
+        isScrolled ? "backdrop-blur-md shadow-sm py-2" : "py-4"
       }`}
+      style={{ backgroundColor: 'rgba(147, 183, 255, 0.8)' }}
     >
       <div className="max-w-[1280px] mx-auto px-6 flex items-center justify-between">
         <Link href="/" className="flex items-center">
           <div className="relative h-8 w-8 mr-2">
             <Image src="/baselogo.png" alt="Base Logo" fill className="object-contain" />
           </div>
-          <span className="text-primary font-semibold">Base</span>
+          <span className="text-primary font-semibold">Talent Hive</span>
         </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
-          <Link href="/hackathons" className="nav-link">
-            Buildhathons
+          <Link href="/hackathons" className="nav-link hover:text-[#DCBD7A] transition-colors">
+            Hackathons
           </Link>
-          <Link href="/bounties" className="nav-link">
+          <Link href="/bounties" className="nav-link hover:text-[#DCBD7A] transition-colors">
             Bounties
           </Link>
-          <Link href="/grants" className="nav-link">
+          <Link href="/grants" className="nav-link hover:text-[#DCBD7A] transition-colors">
             Grants
           </Link>
-          <Link href="/projects" className="nav-link">
+          <Link href="/projects" className="nav-link hover:text-[#DCBD7A] transition-colors">
            Jobs
           </Link>
-          <Link href="/about" className="nav-link">
+          <Link href="/about" className="nav-link hover:text-[#DCBD7A] transition-colors">
             About
           </Link>
         </nav>
 
         <div className="hidden md:flex items-center space-x-4">
           {isConnected ? (
-            <div className="flex items-center">
-              <div className="h-8 w-8 rounded-full bg-gray-200 overflow-hidden relative">
-                <Image src="/placeholder.svg?height=32&width=32" alt="User Avatar" width={32} height={32} />
-              </div>
-              <ChevronDown className="h-4 w-4 ml-1 text-gray-600" />
+            <div className="relative">
+              <button 
+                className="flex items-center space-x-2 bg-[#DCBD7A]/10 rounded-full py-1 px-2 hover:bg-[#DCBD7A]/20 transition-colors"
+                onClick={toggleProfileDropdown}
+              >
+                <div className="h-8 w-8 rounded-full overflow-hidden relative">
+                  <Image src={Profileicon} alt="User Avatar" width={32} height={32} />
+                </div>
+                <ChevronDown className="h-4 w-4 text-[#DCBD7A]" />
+              </button>
+              
+              {/* Profile Dropdown */}
+              {isProfileDropdownOpen && (
+                <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-50">
+                  <Link 
+                    href="/profile" 
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  >
+                    Profile
+                  </Link>
+                  <Link 
+                    href="/settings" 
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  >
+                    Settings
+                  </Link>
+                  <button 
+                    className="flex items-center w-full px-4 py-2 text-sm text-red-600 hover:bg-gray-100"
+                    onClick={handleLogout}
+                  >
+                    <LogOut className="h-4 w-4 mr-2" />
+                    Logout
+                  </button>
+                </div>
+              )}
             </div>
           ) : (
-            <ConnectWalletButton onConnect={handleConnect} />
+            <div className="flex items-center space-x-3">
+              <div className="h-8 w-8 rounded-full overflow-hidden relative">
+                <Image src={Profileicon} alt="Profile" width={32} height={32} />
+              </div>
+              <ConnectWalletButton onConnect={handleConnect} />
+            </div>
           )}
         </div>
 
@@ -86,30 +133,51 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-white shadow-md p-4">
+        <div className="md:hidden absolute top-full left-0 right-0 shadow-md p-4" style={{ backgroundColor: 'rgba(147, 183, 255, 0.9)' }}>
           <nav className="flex flex-col space-y-4">
-            <Link href="/hackathons" className="nav-link" onClick={() => setIsMenuOpen(false)}>
+            <Link href="/hackathons" className="nav-link hover:text-[#DCBD7A]" onClick={() => setIsMenuOpen(false)}>
               Hackathons
             </Link>
-            <Link href="/bounties" className="nav-link" onClick={() => setIsMenuOpen(false)}>
+            <Link href="/bounties" className="nav-link hover:text-[#DCBD7A]" onClick={() => setIsMenuOpen(false)}>
               Bounties
             </Link>
-            <Link href="/grants" className="nav-link" onClick={() => setIsMenuOpen(false)}>
+            <Link href="/grants" className="nav-link hover:text-[#DCBD7A]" onClick={() => setIsMenuOpen(false)}>
               Grants
             </Link>
-            <Link href="/projects" className="nav-link" onClick={() => setIsMenuOpen(false)}>
-              Projects
+            <Link href="/projects" className="nav-link hover:text-[#DCBD7A]" onClick={() => setIsMenuOpen(false)}>
+              Jobs
             </Link>
-            <Link href="/about" className="nav-link" onClick={() => setIsMenuOpen(false)}>
+            <Link href="/about" className="nav-link hover:text-[#DCBD7A]" onClick={() => setIsMenuOpen(false)}>
               About
             </Link>
-            {!isConnected && (
-              <ConnectWalletButton
-                onConnect={() => {
-                  handleConnect()
-                  setIsMenuOpen(false)
-                }}
-              />
+            {isConnected ? (
+              <div className="pt-2 border-t border-white/20">
+                <div className="flex items-center space-x-2 mb-3">
+                  <div className="h-8 w-8 rounded-full overflow-hidden relative">
+                    <Image src={Profileicon} alt="User Avatar" width={32} height={32} />
+                  </div>
+                  <span className="font-medium">Your Account</span>
+                </div>
+                <button 
+                  className="flex items-center text-red-600 hover:text-red-700"
+                  onClick={handleLogout}
+                >
+                  <LogOut className="h-4 w-4 mr-2" />
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <div className="flex items-center space-x-3 pt-2">
+                <div className="h-8 w-8 rounded-full overflow-hidden relative">
+                  <Image src={Profileicon} alt="Profile" width={32} height={32} />
+                </div>
+                <ConnectWalletButton
+                  onConnect={() => {
+                    handleConnect()
+                    setIsMenuOpen(false)
+                  }}
+                />
+              </div>
             )}
           </nav>
         </div>
