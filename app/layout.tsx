@@ -4,6 +4,8 @@ import { Nunito_Sans } from "next/font/google"
 import "./globals.css"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
+import { ThemeProvider } from "@/components/theme-provider"
+import { Web3ModalProvider } from "@/lib/web3modal-provider"
 
 
 const nunitoSans = Nunito_Sans({
@@ -26,9 +28,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${nunitoSans.variable} font-sans`}>
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Web3ModalProvider>
+            <Header />
+            <main>{children}</main>
+            <Footer />
+          </Web3ModalProvider>
+        </ThemeProvider>
       </body>
     </html>
   )

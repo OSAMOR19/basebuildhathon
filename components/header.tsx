@@ -6,12 +6,13 @@ import Link from "next/link"
 import { ChevronDown, Menu, X, LogOut } from "lucide-react"
 import { ConnectWalletButton } from "./connect-wallet-button"
 import Profileicon from "@/components/images/baseavatar1.svg"
+import { useAccount } from "wagmi"
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isConnected, setIsConnected] = useState(false)
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false)
+  const { isConnected } = useAccount()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,15 +33,6 @@ export default function Header() {
 
   const toggleProfileDropdown = () => {
     setIsProfileDropdownOpen(!isProfileDropdownOpen)
-  }
-
-  const handleConnect = () => {
-    setIsConnected(true)
-  }
-
-  const handleLogout = () => {
-    setIsConnected(false)
-    setIsProfileDropdownOpen(false)
   }
 
   return (
@@ -105,13 +97,6 @@ export default function Header() {
                   >
                     Settings
                   </Link>
-                  <button 
-                    className="flex items-center w-full px-4 py-2 text-sm text-red-600 hover:bg-gray-100"
-                    onClick={handleLogout}
-                  >
-                    <LogOut className="h-4 w-4 mr-2" />
-                    Logout
-                  </button>
                 </div>
               )}
             </div>
@@ -120,7 +105,7 @@ export default function Header() {
               <div className="h-8 w-8 rounded-full overflow-hidden relative">
                 <Image src={Profileicon} alt="Profile" width={32} height={32} />
               </div>
-              <ConnectWalletButton onConnect={handleConnect} />
+              <ConnectWalletButton />
             </div>
           )}
         </div>
@@ -158,25 +143,13 @@ export default function Header() {
                   </div>
                   <span className="font-medium">Your Account</span>
                 </div>
-                <button 
-                  className="flex items-center text-red-600 hover:text-red-700"
-                  onClick={handleLogout}
-                >
-                  <LogOut className="h-4 w-4 mr-2" />
-                  Logout
-                </button>
               </div>
             ) : (
               <div className="flex items-center space-x-3 pt-2">
                 <div className="h-8 w-8 rounded-full overflow-hidden relative">
                   <Image src={Profileicon} alt="Profile" width={32} height={32} />
                 </div>
-                <ConnectWalletButton
-                  onConnect={() => {
-                    handleConnect()
-                    setIsMenuOpen(false)
-                  }}
-                />
+                <ConnectWalletButton />
               </div>
             )}
           </nav>
