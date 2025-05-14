@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { useAccount } from "wagmi"
+import { usePrivy } from '@privy-io/react-auth'
 import { 
   Github, 
   Twitter, 
@@ -18,7 +18,7 @@ import {
   Palette, 
   MessageSquare
 } from "lucide-react"
-import { ConnectWalletButton } from "@/components/connect-wallet-button"
+import { PrivyConnectButton } from "@/components/privy-connect-button"
 import Profileicon from "@/components/images/baseavatar1.svg"
 
 // Mock data for demonstration
@@ -109,7 +109,7 @@ const submittedWork = [
 ]
 
 export default function ProfilePage() {
-  const { isConnected } = useAccount()
+  const { authenticated, ready } = usePrivy()
   const [activeTab, setActiveTab] = useState("ongoing")
   
   const getTabIcon = (type: string) => {
@@ -139,7 +139,7 @@ export default function ProfilePage() {
                 className="object-cover"
               />
             </div>
-            {isConnected && (
+            {authenticated && (
               <div className="absolute bottom-0 right-0 bg-green-500 h-6 w-6 rounded-full border-2 border-white"></div>
             )}
           </div>
@@ -152,8 +152,8 @@ export default function ProfilePage() {
                 <p className="text-gray-600">@{profileData.username} • Joined {profileData.joinedDate}</p>
               </div>
               
-              {!isConnected ? (
-                <ConnectWalletButton />
+              {!authenticated ? (
+                <PrivyConnectButton />
               ) : (
                 <button className="bg-[#0D53DD] text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-[#0D53DD]/90 transition-colors">
                   Edit Profile
@@ -190,7 +190,7 @@ export default function ProfilePage() {
             </div>
             
             {/* Connected Wallet */}
-            {isConnected && (
+            {authenticated && (
               <div className="bg-[#F8FAFC] p-4 rounded-lg inline-block">
                 <p className="text-sm text-gray-600 mb-1">Connected Wallet</p>
                 <p className="font-mono text-sm">{profileData.walletAddress}</p>

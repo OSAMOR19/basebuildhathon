@@ -5,7 +5,7 @@ import "./globals.css"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 import { ThemeProvider } from "@/components/theme-provider"
-import { Web3ModalProvider } from "@/lib/web3modal-provider"
+import { PrivyAuthProvider } from "@/lib/privy-provider"
 
 
 const nunitoSans = Nunito_Sans({
@@ -34,11 +34,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Web3ModalProvider>
+          <PrivyAuthProvider>
             <Header />
             <main>{children}</main>
             <Footer />
-          </Web3ModalProvider>
+          </PrivyAuthProvider>
         </ThemeProvider>
       </body>
     </html>

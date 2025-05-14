@@ -1,12 +1,11 @@
 "use client"
 
 import { SendTransactionButton } from "@/components/send-transaction-button"
-import { ConnectWalletButton } from "@/components/connect-wallet-button"
-import { useAccount, useNetwork } from "wagmi"
+import { PrivyConnectButton } from "@/components/privy-connect-button"
+import { usePrivy } from "@privy-io/react-auth"
 
 export default function SendTxDemoPage() {
-  const { isConnected } = useAccount()
-  const { chain } = useNetwork()
+  const { authenticated, user, ready } = usePrivy()
 
   return (
     <div className="container mx-auto px-4 py-12">
@@ -16,9 +15,9 @@ export default function SendTxDemoPage() {
         <div className="space-y-6">
           <div className="bg-gray-50 p-4 rounded-lg">
             <h2 className="text-lg font-medium mb-2">Wallet Status</h2>
-            {isConnected ? (
+            {authenticated ? (
               <div className="text-green-600 font-medium">
-                Connected to {chain?.name || "unknown network"}
+                Connected {user?.wallet?.chainId ? `to ${user.wallet.chainId === 8453 ? 'Base' : user.wallet.chainId === 1 ? 'Ethereum' : 'Chain ID: ' + user.wallet.chainId}` : ''}
               </div>
             ) : (
               <div className="text-amber-600 font-medium">
@@ -31,7 +30,7 @@ export default function SendTxDemoPage() {
             <div className="w-full">
               <h2 className="text-lg font-medium mb-2">1. Connect Your Wallet</h2>
               <div className="flex justify-center">
-                <ConnectWalletButton />
+                <PrivyConnectButton />
               </div>
             </div>
             

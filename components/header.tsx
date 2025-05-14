@@ -4,15 +4,15 @@ import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { ChevronDown, Menu, X, LogOut } from "lucide-react"
-import { ConnectWalletButton } from "./connect-wallet-button"
+import { PrivyConnectButton } from "./privy-connect-button"
 import Profileicon from "@/components/images/baseavatar1.svg"
-import { useAccount } from "wagmi"
+import { usePrivy } from "@privy-io/react-auth"
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false)
-  const { isConnected } = useAccount()
+  const { authenticated, ready } = usePrivy()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -70,7 +70,7 @@ export default function Header() {
         </nav>
 
         <div className="hidden md:flex items-center space-x-4">
-          {isConnected ? (
+          {authenticated ? (
             <div className="relative">
               <button 
                 className="flex items-center space-x-2 bg-[#DCBD7A]/10 rounded-full py-1 px-2 hover:bg-[#DCBD7A]/20 transition-colors"
@@ -105,7 +105,7 @@ export default function Header() {
               <div className="h-8 w-8 rounded-full overflow-hidden relative">
                 <Image src={Profileicon} alt="Profile" width={32} height={32} />
               </div>
-              <ConnectWalletButton />
+              <PrivyConnectButton />
             </div>
           )}
         </div>
@@ -135,7 +135,7 @@ export default function Header() {
             <Link href="/about" className="nav-link hover:text-[#DCBD7A]" onClick={() => setIsMenuOpen(false)}>
               About
             </Link>
-            {isConnected ? (
+            {authenticated ? (
               <div className="pt-2 border-t border-white/20">
                 <div className="flex items-center space-x-2 mb-3">
                   <div className="h-8 w-8 rounded-full overflow-hidden relative">
@@ -149,7 +149,7 @@ export default function Header() {
                 <div className="h-8 w-8 rounded-full overflow-hidden relative">
                   <Image src={Profileicon} alt="Profile" width={32} height={32} />
                 </div>
-                <ConnectWalletButton />
+                <PrivyConnectButton />
               </div>
             )}
           </nav>
