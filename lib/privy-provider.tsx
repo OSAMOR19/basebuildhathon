@@ -6,7 +6,7 @@ import { base, mainnet } from 'viem/chains'
 
 // Using a temporary App ID for development
 // You should replace this with your own App ID from https://console.privy.io/
-const PRIVY_APP_ID = 'clqgc5kkr00yjl80fpueiqt5g'
+const PRIVY_APP_ID = 'cmanjeouv042lkq0mpmnxzi33'
 
 export function PrivyAuthProvider({ children }: { children: ReactNode }) {
   // Use this to prevent hydration errors
