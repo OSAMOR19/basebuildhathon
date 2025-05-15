@@ -86,7 +86,7 @@ export default function BountyPage() {
                 <label className="block text-sm font-medium mb-2">Bounty Title</label>
                 <input 
                   type="text" 
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#DCBD7A]" 
+                  className="w-full px-4 bg-white text-black py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#DCBD7A]" 
                   placeholder="Enter a clear, descriptive title"
                 />
               </div>
@@ -119,7 +119,7 @@ export default function BountyPage() {
               <div>
                 <label className="block text-sm font-medium mb-2">Description</label>
                 <textarea 
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#DCBD7A] min-h-[120px]" 
+                  className="w-full bg-white text-black px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#DCBD7A] min-h-[120px]" 
                   placeholder="Describe the bounty in detail, including requirements and deliverables"
                 />
               </div>
@@ -192,7 +192,7 @@ export default function BountyPage() {
                 <label className="block text-sm font-medium mb-2">Skills Required</label>
                 <input 
                   type="text" 
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#DCBD7A]" 
+                  className="w-full bg-white text-black px-4 py-3 bg-white text-black rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#DCBD7A]" 
                   placeholder="e.g., Solidity, React, UI Design (comma separated)"
                 />
               </div>
@@ -231,7 +231,7 @@ export default function BountyPage() {
                 <label className="block text-sm font-medium mb-2">Your Name</label>
                 <input 
                   type="text" 
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#DCBD7A]" 
+                  className="w-full px-4 bg-white text-black py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#DCBD7A]" 
                   placeholder="Enter your full name"
                 />
               </div>
@@ -240,7 +240,7 @@ export default function BountyPage() {
                 <label className="block text-sm font-medium mb-2">Email Address</label>
                 <input 
                   type="email" 
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#DCBD7A]" 
+                  className="w-full px-4 bg-white text-black py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#DCBD7A]" 
                   placeholder="your@email.com"
                 />
               </div>
@@ -249,7 +249,7 @@ export default function BountyPage() {
                 <label className="block text-sm font-medium mb-2">Company/Project (optional)</label>
                 <input 
                   type="text" 
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#DCBD7A]" 
+                  className="w-full bg-white text-black px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#DCBD7A]" 
                   placeholder="Your company or project name"
                 />
               </div>
@@ -258,9 +258,9 @@ export default function BountyPage() {
                 <input 
                   type="checkbox" 
                   id="terms" 
-                  className="mt-1 mr-2"
+                  className="mt-1 bg-white text-black mr-2"
                 />
-                <label htmlFor="terms" className="text-sm text-gray-600">
+                <label htmlFor="terms" className="text-sm  text-gray-600">
                   I agree to the <a href="#" className="text-[#DCBD7A] hover:underline">Terms of Service</a> and <a href="#" className="text-[#DCBD7A] hover:underline">Privacy Policy</a>
                 </label>
               </div>

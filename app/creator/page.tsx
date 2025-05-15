@@ -76,7 +76,7 @@ export default function CreatorPage() {
                 <label className="block text-sm font-medium mb-2">Full Name</label>
                 <input 
                   type="text" 
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#DCBD7A] bg-white text-gray-900" 
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#DCBD7A] bg-white text-black" 
                   placeholder="Enter your full name"
                 />
               </div>
@@ -85,7 +85,7 @@ export default function CreatorPage() {
                 <label className="block text-sm font-medium mb-2">Email Address</label>
                 <input 
                   type="email" 
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#DCBD7A] bg-white text-gray-900" 
+                  className=" bg-white text-black w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#DCBD7A]" 
                   placeholder="your@email.com"
                 />
               </div>
@@ -93,7 +93,7 @@ export default function CreatorPage() {
               <div>
                 <label className="block text-sm font-medium mb-2">Bio</label>
                 <textarea 
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#DCBD7A] min-h-[120px] bg-white text-gray-900" 
+                  className=" bg-white text-black w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#DCBD7A] min-h-[120px]" 
                   placeholder="Tell us a bit about yourself and your experience"
                 />
               </div>
@@ -127,7 +127,7 @@ export default function CreatorPage() {
                   <select
                     value={category}
                     onChange={(e) => handleCategoryChange(e.target.value)}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#DCBD7A] appearance-none bg-white text-gray-900"
+                    className="w-full bg-white text-black px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#DCBD7A] appearance-none"
                   >
                     <option value="">Select a category</option>
                     {categories.map((cat) => (
@@ -148,8 +148,8 @@ export default function CreatorPage() {
                         onClick={() => toggleSkill(skill)}
                         className={`px-4 py-3 rounded-lg border cursor-pointer transition-colors ${
                           skills.includes(skill) 
-                            ? 'border-[#DCBD7A] bg-[#DCBD7A]/10 text-black' 
-                            : 'border-gray-300 hover:border-[#DCBD7A]/50 bg-white text-gray-900'
+                            ? 'border-[#DCBD7A] bg-[#DCBD7A]/10 text-black bg-white text-black' 
+                            : 'border-gray-300 hover:border-[#DCBD7A]/50'
                         }`}
                       >
                         {skill}
@@ -191,7 +191,7 @@ export default function CreatorPage() {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div 
                 onClick={handleFileClick}
-                className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center cursor-pointer hover:border-[#DCBD7A] transition-colors bg-white"
+                className="border-2  border-dashed border-gray-300 rounded-lg p-8 text-center cursor-pointer hover:border-[#DCBD7A] transition-colors"
               >
                 <input 
                   type="file" 
@@ -208,7 +208,7 @@ export default function CreatorPage() {
                 <label className="block text-sm font-medium mb-2">Portfolio URL (optional)</label>
                 <input 
                   type="url" 
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#DCBD7A] bg-white text-gray-900" 
+                  className="w-full bg-white text-black px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#DCBD7A]" 
                   placeholder="https://yourportfolio.com"
                 />
               </div>
@@ -302,44 +302,86 @@ export default function CreatorPage() {
             </a>
           </motion.div>
         ) : (
-          <div className="flex flex-col items-center">
-            <div className="mb-8 text-center">
-              <h1 className="text-3xl md:text-4xl font-bold mb-4 text-white">Join as a Creator</h1>
-              <p className="text-lg text-white/90 max-w-xl">
-                Apply to become a creator on Base and start earning by participating in bounties and hackathons.
-              </p>
+          <>
+            <div className="text-center mb-10">
+              <motion.h1 
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="text-3xl md:text-4xl font-bold mb-4"
+              >
+                Become a Creator on <span className="text-[#DCBD7A]">Base</span>
+              </motion.h1>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="text-lg max-w-2xl mx-auto"
+              >
+                Join our community of talented creators and get paid for your contributions
+              </motion.p>
             </div>
             
-            <div className="w-full">
-              <div className="flex justify-center mb-8">
-                <div className="flex items-center">
-                  {[1, 2, 3].map((i) => (
-                    <div key={i} className="flex items-center">
-                      <div 
-                        className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                          i <= step 
-                            ? 'bg-[#DCBD7A] text-black' 
-                            : 'bg-white/30 text-white'
-                        }`}
-                      >
-                        {i}
-                      </div>
-                      {i < 3 && (
-                        <div 
-                          className={`w-10 h-1 ${
-                            i < step ? 'bg-[#DCBD7A]' : 'bg-white/30'
-                          }`}
-                        />
-                      )}
+            {/* Steps Indicator */}
+            <div className="flex justify-center mb-8">
+              <div className="flex items-center max-w-xs w-full">
+                {[1, 2, 3].map((i) => (
+                  <div key={i} className="flex-1 flex items-center">
+                    <div 
+                      className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                        step >= i ? 'bg-[#DCBD7A] text-black' : 'bg-gray-200 text-gray-500'
+                      }`}
+                    >
+                      {i}
                     </div>
-                  ))}
-                </div>
+                    {i < 3 && (
+                      <div 
+                        className={`flex-1 h-1 ${
+                          step > i ? 'bg-[#DCBD7A]' : 'bg-gray-200'
+                        }`}
+                      />
+                    )}
+                  </div>
+                ))}
               </div>
-              
+            </div>
+            
+            <div className="flex justify-center">
               {renderStep()}
             </div>
-          </div>
+          </>
         )}
+      </div>
+      
+      {/* Decorative Elements */}
+      <div className="absolute bottom-40 left-10 z-0 hidden lg:block">
+        <motion.div
+          className="w-16 h-16 rounded-full bg-[#DCBD7A]/20"
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.2, 0.3, 0.2]
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+      </div>
+      
+      <div className="absolute top-40 right-20 z-0 hidden lg:block">
+        <motion.div
+          className="w-12 h-12 rounded-full bg-white/20"
+          animate={{
+            y: [0, -10, 0],
+            opacity: [0.2, 0.4, 0.2]
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
       </div>
     </div>
   )
