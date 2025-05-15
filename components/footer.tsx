@@ -86,7 +86,7 @@ export default function Footer() {
           {/* Tagline and Social Icons */}
           <div className="md:col-span-3">
             <h2 className="text-2xl font-semibold mb-6 text-[#495057]">
-              Become a <span className="text-[#FF00AA]">creative</span> by building your ideas to life on BASE
+            Cr8Core Labs <span className="text-[#FF00AA]">Fueling</span> the Creative Layer of Base
             </h2>
 
             <div className="flex space-x-4 mt-6">

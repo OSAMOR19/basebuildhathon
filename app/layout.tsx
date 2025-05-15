@@ -15,8 +15,8 @@ const nunitoSans = Nunito_Sans({
 })
 
 export const metadata: Metadata = {
-  title: "Earn on Base",
-  description: "A marketplace where creators, builders & doers get paid to ideate, contribute & earn.",
+  title: "Cr8CoreLabs",
+  description: "Cr8core Labs is a platform where creators, builders & doers get paid to ideate, contribute & earn.",
     generator: 'v0.dev'
 }
 
