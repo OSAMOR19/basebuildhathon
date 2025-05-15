@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Clock, DollarSign } from "lucide-react"
+import { Clock, DollarSign, Trophy, Users } from "lucide-react"
 import Azzapic from "@/components/images/azza.jpg"
 import Zorapic from "@/components/images/zora.jpg"
 import metacade from "@/components/images/metacade.jpg"
@@ -11,6 +11,10 @@ import Qrbase from "@/components/images/qrbase.jpg"
 import send from "@/components/images/send.jpg"
 import cliza from "@/components/images/cliza.jpg"
 import bankr from "@/components/images/bankrbot.jpg"
+import ohara from "@/components/images/ohara.jpg" // Assuming this exists, add if needed
+import metopia from "@/components/images/metopia.jpg" // Assuming this exists, add if needed
+import predictbase from "@/components/images/predictbase.png" // Assuming this exists, add if needed
+import ownthedoge from "@/components/images/ownthedodge.jpg" // Assuming this exists, add if needed
 import Image from "next/image"
 import Link from "next/link"
 import FilterTabs from "@/components/filter-tabs"
@@ -20,679 +24,447 @@ interface BountyData {
   title: string
   description: string
   reward: {
-    amount: number
+    amount: number | string
     currency: string
+    winners?: number
+    distribution?: {
+      place: string
+      amount: number | string
+    }[]
   }
   deadline: string
   tags: string[]
-  difficulty: "Easy" | "Medium" | "Hard"
-  category: "Video" | "Thread" | "Development" | "Writeathon" | "Design"
+  difficulty?: "Easy" | "Medium" | "Hard"
+  category: "Video" | "Thread" | "Development" | "Writeathon" | "Design" | "Meme"
   projectName: string
   projectLogo: any
+  rules?: string[]
 }
 
 // Updated bounties data with categories and project logos
 const bountiesData: BountyData[] = [
   {
     id: "1",
-    title: "Build a Base Chain Block Explorer",
+    title: "Video Contest: ClizaAI",
     description:
-      "Create a user-friendly block explorer for Base Chain that allows users to search transactions, view block details, and track wallet activities with a clean, intuitive interface.",
+      "Create a powerful, short-form video that introduces ClizaAI, its features, and why it matters to developers building on Base",
     reward: {
       amount: 5000,
       currency: "USDC",
+      winners: 5,
+      distribution: [
+        { place: "1st Place", amount: 2000 },
+        { place: "2nd Place", amount: 1000 },
+        { place: "3rd Place", amount: 800 },
+        { place: "4th", amount: 700 },
+        { place: "5th", amount: 500 }
+      ]
     },
     deadline: "June 15, 2025",
-    tags: ["Development", "UI/UX", "Blockchain"],
-    difficulty: "Medium",
-    category: "Development",
-    projectName: "Base",
-    projectLogo: Qrbase
+    tags: ["Video", "AI", "Developer Tools"],
+    category: "Video",
+    projectName: "ClizaAI",
+    projectLogo: cliza,
+    rules: [
+      "Original content only",
+      "Post on X with #ClizaAIx #Base",
+      "Tag @ClizaAI + @cre8corelabs and @Base",
+      "Follow the accounts"
+    ]
   },
   {
     id: "2",
-    title: "Design Base Wallet Mobile UI Kit",
+    title: "Thread Competition: BankrBot",
     description:
-      "Create a comprehensive UI kit for Base wallet mobile applications, including components for transaction history, asset management, and wallet connection flows.",
+      "Write a clear, engaging thread explaining what BankrBot is and how it's empowering builders on Base. Cover how BankrBot simplifies token launches, its role in launching content coins, and how it supports creators.",
     reward: {
-      amount: 2500,
+      amount: 3000,
       currency: "USDC",
+      winners: 3,
+      distribution: [
+        { place: "1st", amount: 1500 },
+        { place: "2nd", amount: 1000 },
+        { place: "3rd", amount: 500 }
+      ]
     },
     deadline: "May 30, 2025",
-    tags: ["Design", "Mobile", "UI Kit"],
-    difficulty: "Medium",
-    category: "Design",
-    projectName: "Base",
-    projectLogo: Qrbase
+    tags: ["Thread", "Token Launches", "Creator Economy"],
+    category: "Thread",
+    projectName: "BankrBot",
+    projectLogo: bankr,
+    rules: [
+      "Minimum of 6 tweets",
+      "Use #BankrBotBase",
+      "Tag @BankrBot and @cre8corelabs",
+      "Follow both accounts"
+    ]
   },
   {
     id: "3",
-    title: "Develop Base Chain Analytics Dashboard",
+    title: "Video Contest: MetaCade",
     description:
-      "Build an analytics dashboard that visualizes key metrics on Base Chain, including transaction volume, active addresses, gas usage, and popular dApps.",
+      "Dive into the MetaCade platform, explore their game hub, and create a video that showcases the features, games, and overall user experience. Highlight what makes MetaCade unique, fun, and an exciting part of the Base ecosystem.",
     reward: {
-      amount: 7500,
+      amount: 4000,
       currency: "USDC",
+      winners: 5,
+      distribution: [
+        { place: "1st", amount: 1500 },
+        { place: "2nd", amount: 1000 },
+        { place: "3rd", amount: 700 },
+        { place: "4th", amount: 500 },
+        { place: "5th", amount: 300 }
+      ]
     },
-    deadline: "July 10, 2025",
-    tags: ["Development", "Analytics", "Dashboard"],
-    difficulty: "Hard",
-    category: "Development",
-    projectName: "Coinbase",
-    projectLogo: coinbase
+    deadline: "June 20, 2025",
+    tags: ["Video", "Gaming", "Platform Review"],
+    category: "Video",
+    projectName: "MetaCade",
+    projectLogo: metacade,
+    rules: [
+      "Max 2 minutes",
+      "Must include real footage from the MetaCade hub",
+      "Post on X using #MetaCadeOnBase",
+      "Tag @MetaCade and @cre8corelabs",
+      "Follow both accounts"
+    ]
   },
   {
     id: "4",
-    title: "Create Educational Content for Base Developers",
+    title: "Video Contest: QRBase",
     description:
-      "Develop a series of tutorials, guides, and documentation to help new developers get started with building on Base Chain.",
-    reward: {
-      amount: 3000,
-      currency: "USDC",
-    },
-    deadline: "June 5, 2025",
-    tags: ["Content", "Education", "Documentation"],
-    difficulty: "Easy",
-    category: "Writeathon",
-    projectName: "Coinbase",
-    projectLogo: coinbase
-  },
-  {
-    id: "5",
-    title: "Build a Cross-Chain Bridge UI",
-    description:
-      "Design and implement a user interface for a cross-chain bridge that allows users to transfer assets between Base and other EVM-compatible chains.",
-    reward: {
-      amount: 6000,
-      currency: "USDC",
-    },
-    deadline: "July 25, 2025",
-    tags: ["Development", "UI/UX", "Cross-Chain"],
-    difficulty: "Hard",
-    category: "Development",
-    projectName: "Zora",
-    projectLogo: Zorapic
-  },
-  {
-    id: "6",
-    title: "Develop Base Chain NFT Marketplace Template",
-    description:
-      "Create a customizable template for NFT marketplaces built on Base Chain, including features for minting, listing, bidding, and trading NFTs.",
-    reward: {
-      amount: 5500,
-      currency: "USDC",
-    },
-    deadline: "August 10, 2025",
-    tags: ["Development", "NFT", "Marketplace"],
-    difficulty: "Medium",
-    category: "Development",
-    projectName: "Zora",
-    projectLogo: Zorapic
-  },
-  {
-    id: "7",
-    title: "Create a Video Tutorial Series on Base Chain Development",
-    description:
-      "Produce a comprehensive video series teaching developers how to build dApps on Base Chain, from setup to deployment.",
-    reward: {
-      amount: 4000,
-      currency: "USDC",
-    },
-    deadline: "June 20, 2025",
-    tags: ["Video", "Education", "Tutorial"],
-    difficulty: "Medium",
-    category: "Video",
-    projectName: "Base",
-    projectLogo: Qrbase
-  },
-  {
-    id: "8",
-    title: "Design Base Chain Onboarding Illustrations",
-    description:
-      "Create a set of illustrations for the Base Chain onboarding process that explains key concepts in a visually appealing way.",
-    reward: {
-      amount: 3500,
-      currency: "USDC",
-    },
-    deadline: "May 25, 2025",
-    tags: ["Design", "Illustration", "Onboarding"],
-    difficulty: "Medium",
-    category: "Design",
-    projectName: "Metacade",
-    projectLogo: metacade
-  },
-  {
-    id: "9",
-    title: "Write a Thread Explaining Base Chain Benefits",
-    description:
-      "Create an engaging, informative thread explaining the benefits of Base Chain for developers and users in simple terms.",
-    reward: {
-      amount: 1000,
-      currency: "USDC",
-    },
-    deadline: "May 15, 2025",
-    tags: ["Content", "Social Media", "Education"],
-    difficulty: "Easy",
-    category: "Thread",
-    projectName: "Farcaster",
-    projectLogo: farcaster
-  },
-  {
-    id: "10",
-    title: "Produce a Video Demo of Base Chain dApp",
-    description:
-      "Create a high-quality video demonstration of a popular dApp on Base Chain, showcasing its features and user experience.",
+      "Create a demo or story showing how QRBase simplifies QR code payments on Base.",
     reward: {
       amount: 2000,
       currency: "USDC",
-    },
-    deadline: "June 10, 2025",
-    tags: ["Video", "Demo", "dApp"],
-    difficulty: "Medium",
-    category: "Video",
-    projectName: "Send",
-    projectLogo: send
-  },
-  {
-    id: "11",
-    title: "Write a Technical Article on Base Chain Architecture",
-    description:
-      "Create an in-depth technical article explaining the architecture of Base Chain and how it differs from other L2 solutions.",
-    reward: {
-      amount: 2500,
-      currency: "USDC",
-    },
-    deadline: "July 5, 2025",
-    tags: ["Content", "Technical", "Architecture"],
-    difficulty: "Hard",
-    category: "Writeathon",
-    projectName: "Cliza",
-    projectLogo: cliza
-  },
-  {
-    id: "12",
-    title: "Create Farcaster Thread on Base Chain Use Cases",
-    description:
-      "Develop an engaging thread on Farcaster highlighting innovative use cases for Base Chain across different industries.",
-    reward: {
-      amount: 1500,
-      currency: "USDC",
-    },
-    deadline: "May 20, 2025",
-    tags: ["Content", "Social Media", "Use Cases"],
-    difficulty: "Easy",
-    category: "Thread",
-    projectName: "Farcaster",
-    projectLogo: farcaster
-  },
-  {
-    id: "13",
-    title: "Create a Video Guide for Base Wallet Setup",
-    description:
-      "Produce a step-by-step video guide showing users how to set up and secure their Base wallet, including best security practices.",
-    reward: {
-      amount: 1800,
-      currency: "USDC",
+      winners: 3,
+      distribution: [
+        { place: "1st", amount: 1000 },
+        { place: "2nd", amount: 600 },
+        { place: "3rd", amount: 400 }
+      ]
     },
     deadline: "June 5, 2025",
-    tags: ["Video", "Tutorial", "Wallet"],
-    difficulty: "Easy",
+    tags: ["Video", "Payments", "QR Code"],
     category: "Video",
-    projectName: "Base",
+    projectName: "QRBase",
     projectLogo: Qrbase
   },
   {
-    id: "14",
-    title: "Video Explainer: How Base Improves Ethereum Scaling",
+    id: "5",
+    title: "Video Contest: Base – Onboard to Earn",
     description:
-      "Create an animated explainer video that clearly illustrates how Base helps scale Ethereum and the technical aspects behind it.",
+      "Create a compelling video showing how you successfully onboarded at least 3 new people into the Base ecosystem. Include a brief explanation of what Base is and why it matters, along with screenshots or clips of you guiding others.",
+    reward: {
+      amount: 10000,
+      currency: "USDC",
+      winners: 10,
+      distribution: [
+        { place: "Each winner", amount: 1000 }
+      ]
+    },
+    deadline: "July 15, 2025",
+    tags: ["Video", "Onboarding", "Tutorial"],
+    category: "Video",
+    projectName: "Base",
+    projectLogo: Qrbase,
+    rules: [
+      "Video length: 1–2 minutes",
+      "Must onboard at least 3 people",
+      "Post on X with hashtag #BaseOnboardChallenge",
+      "Tag @base and @cre8corelabs",
+      "Follow both accounts"
+    ]
+  },
+  {
+    id: "6",
+    title: "Video Contest: Zora – Power to the Creators",
+    description:
+      "Create a video that clearly explains 'what Zora is' and how it's 'redefining the creator economy' by turning your content into tradeable coins — letting you earn directly from your audience.",
+    reward: {
+      amount: 5000,
+      currency: "USDC",
+      winners: 10,
+      distribution: [
+        { place: "Each winner", amount: 500 }
+      ]
+    },
+    deadline: "June 25, 2025",
+    tags: ["Video", "Creator Economy", "Content Coins"],
+    category: "Video",
+    projectName: "Zora",
+    projectLogo: Zorapic,
+    rules: [
+      "Video must be original and creative",
+      "Duration: Between 60–120 seconds",
+      "Must be uploaded to Zora + shared on either X or YouTube",
+      "Use #ZoraCreatorChallenge",
+      "Tag @ourZORA and @cre8corelabs"
+    ]
+  },
+  {
+    id: "7",
+    title: "Design Contest: Zora – Art Onchain",
+    description:
+      "Create original artwork or design that celebrates Zora's mission of empowering creators and building the onchain creator economy. Make something that spreads Zora's message in a bold, creative way.",
     reward: {
       amount: 3000,
       currency: "USDC",
+      winners: 5,
+      distribution: [
+        { place: "1st", amount: 1200 },
+        { place: "2nd", amount: 800 },
+        { place: "3rd", amount: 500 },
+        { place: "4th", amount: 300 },
+        { place: "5th", amount: 200 }
+      ]
     },
-    deadline: "July 1, 2025",
-    tags: ["Video", "Animation", "Technical"],
-    difficulty: "Medium",
+    deadline: "July 5, 2025",
+    tags: ["Design", "Artwork", "Creator Economy"],
+    category: "Design",
+    projectName: "Zora",
+    projectLogo: Zorapic,
+    rules: [
+      "Must be your original work",
+      "Must be uploaded to Zora",
+      "Share on X with #ZoraArtContest",
+      "Tag @ourZORA, @Base and @cre8corelabs"
+    ]
+  },
+  {
+    id: "8",
+    title: "Video Contest: Farcaster – The Future of Onchain Social",
+    description:
+      "Create a high-quality video that introduces Farcaster to the world as the best onchain social network. Break down what Farcaster is, Channels, Frames, and WarpWallet in a creative way.",
+    reward: {
+      amount: 4000,
+      currency: "USDC",
+      winners: 5,
+      distribution: [
+        { place: "1st", amount: 1500 },
+        { place: "2nd", amount: 1000 },
+        { place: "3rd", amount: 700 },
+        { place: "4th", amount: 500 },
+        { place: "5th", amount: 300 }
+      ]
+    },
+    deadline: "July 10, 2025",
+    tags: ["Video", "Social Network", "Onchain"],
     category: "Video",
-    projectName: "Coinbase",
-    projectLogo: coinbase
+    projectName: "Farcaster",
+    projectLogo: farcaster,
+    rules: [
+      "Length: 1 to 2 minutes",
+      "Post on X using #FarcasterOnBase",
+      "Tag @farcaster_xyz and @cre8corelabs",
+      "Follow both accounts"
+    ]
+  },
+  {
+    id: "9",
+    title: "Thread Competition: Azza – AI-Powered P2P on WhatsApp",
+    description:
+      "Write a detailed and engaging thread introducing Azza, the AI agent built into WhatsApp that powers peer-to-peer (P2P) crypto trading across Africa — especially in Nigeria, South Africa, and Kenya.",
+    reward: {
+      amount: 2000,
+      currency: "USDC",
+      winners: 3,
+      distribution: [
+        { place: "1st", amount: 1000 },
+        { place: "2nd", amount: 600 },
+        { place: "3rd", amount: 400 }
+      ]
+    },
+    deadline: "June 15, 2025",
+    tags: ["Thread", "AI", "P2P Trading", "Africa"],
+    category: "Thread",
+    projectName: "Azza",
+    projectLogo: Azzapic,
+    rules: [
+      "Minimum 6 tweets",
+      "Use #AzzaP2P",
+      "Tag @cre8corelabs and the official Azza handle",
+      "Follow both accounts"
+    ]
+  },
+  {
+    id: "10",
+    title: "Thread Competition: Coinbase Wallet – The Power Wallet for Web3",
+    description:
+      "Write an informative and captivating thread explaining why Coinbase Wallet is one of the most powerful and user-friendly wallets in Web3. Highlight key features like Instant Swap, Gasless Swaps, USDC Rewards, and more.",
+    reward: {
+      amount: 3000,
+      currency: "USDC",
+      winners: 5,
+      distribution: [
+        { place: "1st", amount: 1200 },
+        { place: "2nd", amount: 800 },
+        { place: "3rd", amount: 500 },
+        { place: "4th", amount: 300 },
+        { place: "5th", amount: 200 }
+      ]
+    },
+    deadline: "June 30, 2025",
+    tags: ["Thread", "Wallet", "Web3"],
+    category: "Thread",
+    projectName: "Coinbase Wallet",
+    projectLogo: coinbase,
+    rules: [
+      "Minimum of 10 tweets",
+      "Use #CoinbaseWalletThread",
+      "Tag @coinbasewallet and @cre8corelabs",
+      "Follow both accounts"
+    ]
+  },
+  {
+    id: "11",
+    title: "Meme Contest: SEND – Tag It, Send It",
+    description:
+      "Create funny, creative memes or meme-style art that show people using SEND Tags to instantly send crypto on Base. Highlight the ease, simplicity, and social power of just tagging someone to transfer tokens.",
+    reward: {
+      amount: 2000,
+      currency: "USDC",
+      winners: 5,
+      distribution: [
+        { place: "1st", amount: 800 },
+        { place: "2nd", amount: 500 },
+        { place: "3rd", amount: 300 },
+        { place: "4th", amount: 250 },
+        { place: "5th", amount: 150 }
+      ]
+    },
+    deadline: "June 20, 2025",
+    tags: ["Meme", "Payments", "Social"],
+    category: "Meme",
+    projectName: "SEND",
+    projectLogo: send,
+    rules: [
+      "Post on X using #SendTagMeme",
+      "Tag @send and @cre8corelabs",
+      "Follow both accounts",
+      "Meme must be original"
+    ]
+  },
+  {
+    id: "12",
+    title: "Thread Competition: Ohara AI – Code, Build & Vibe Onchain",
+    description:
+      "Write an insightful thread introducing Ohara AI, the intelligent onchain coding assistant for the Base ecosystem. Show how it can be used to vibe with code, ship faster, and even build mini apps on Farcaster with ease.",
+    reward: {
+      amount: 3000,
+      currency: "USDC",
+      winners: 5,
+      distribution: [
+        { place: "1st", amount: 1200 },
+        { place: "2nd", amount: 800 },
+        { place: "3rd", amount: 500 },
+        { place: "4th", amount: 300 },
+        { place: "5th", amount: 200 }
+      ]
+    },
+    deadline: "July 5, 2025",
+    tags: ["Thread", "AI", "Coding", "Development"],
+    category: "Thread",
+    projectName: "Ohara AI",
+    projectLogo: ohara,
+    rules: [
+      "Minimum 6 tweets",
+      "Use #OharaAIOnBase",
+      "Tag @cre8corelabs and the official Ohara AI handle",
+      "Follow both accounts"
+    ]
+  },
+  {
+    id: "13",
+    title: "Meme Contest: Predict Base – Predict the Future, Win the Internet",
+    description:
+      "Create hilarious and creative memes that showcase how Predict Base is revolutionizing the onchain prediction market on Base. Focus on the thrill of predicting real events onchain and the meme-ification of onchain predictions.",
+    reward: {
+      amount: 2000,
+      currency: "USDC",
+      winners: 5,
+      distribution: [
+        { place: "1st", amount: 800 },
+        { place: "2nd", amount: 500 },
+        { place: "3rd", amount: 300 },
+        { place: "4th", amount: 250 },
+        { place: "5th", amount: 150 }
+      ]
+    },
+    deadline: "June 25, 2025",
+    tags: ["Meme", "Prediction Markets", "Onchain"],
+    category: "Meme",
+    projectName: "Predict Base",
+    projectLogo: predictbase,
+    rules: [
+      "Post on X with #PredictBaseMemes",
+      "Tag @cre8corelabs and the Predict Base handle",
+      "Follow both accounts",
+      "Keep it original, fun, and Base-native"
+    ]
+  },
+  {
+    id: "14",
+    title: "Video Contest: Metopia – Learn, Verify, Earn",
+    description:
+      "Create an engaging and informative video explaining how Metopia is reshaping education by offering AI-driven learning and verifiable credentials on Base. Highlight how users can verify their learning achievements and earn rewards.",
+    reward: {
+      amount: 4000,
+      currency: "USDC",
+      winners: 5,
+      distribution: [
+        { place: "1st", amount: 1500 },
+        { place: "2nd", amount: 1000 },
+        { place: "3rd", amount: 700 },
+        { place: "4th", amount: 500 },
+        { place: "5th", amount: 300 }
+      ]
+    },
+    deadline: "July 15, 2025",
+    tags: ["Video", "Education", "AI Learning"],
+    category: "Video",
+    projectName: "Metopia",
+    projectLogo: metopia,
+    rules: [
+      "Length: 1–2 minutes",
+      "Post on X using #MetopiaOnBase",
+      "Tag @Metopia and @cre8corelabs",
+      "Follow both accounts"
+    ]
   },
   {
     id: "15",
-    title: "Base DeFi Protocols Comparison Video",
+    title: "Meme Contest: Own the Doge – The Doge Reigns Supreme",
     description:
-      "Create a comprehensive video comparing the top DeFi protocols on Base, highlighting features, APYs, and security considerations.",
-    reward: {
-      amount: 2500,
-      currency: "USDC",
-    },
-    deadline: "June 25, 2025",
-    tags: ["Video", "DeFi", "Comparison"],
-    difficulty: "Medium",
-    category: "Video",
-    projectName: "Bankr",
-    projectLogo: bankr
-  },
-  {
-    id: "16",
-    title: "Base NFT Marketplace Video Walkthrough",
-    description:
-      "Create a detailed video walkthrough of minting, buying, and selling NFTs on Base's top marketplaces.",
-    reward: {
-      amount: 2200,
-      currency: "USDC",
-    },
-    deadline: "July 15, 2025",
-    tags: ["Video", "NFT", "Tutorial"],
-    difficulty: "Medium",
-    category: "Video",
-    projectName: "Zora",
-    projectLogo: Zorapic
-  },
-  {
-    id: "17",
-    title: "Base vs Other L2s: Video Comparison",
-    description:
-      "Create a fair, technical comparison video between Base and other Layer 2 solutions like Optimism, Arbitrum, and zkSync.",
+      "Create hilarious, creative Doge-themed memes that capture the spirit of the Own the Doge project. Your memes should celebrate all things Doge and crypto in fun, witty ways.",
     reward: {
       amount: 3500,
       currency: "USDC",
-    },
-    deadline: "August 5, 2025",
-    tags: ["Video", "Comparison", "Technical"],
-    difficulty: "Hard",
-    category: "Video",
-    projectName: "Base",
-    projectLogo: Qrbase
-  },
-  {
-    id: "18",
-    title: "Thread: Base Chain for Traditional Developers",
-    description:
-      "Create a thread explaining Base Chain concepts for developers coming from traditional web development backgrounds.",
-    reward: {
-      amount: 1200,
-      currency: "USDC",
-    },
-    deadline: "May 30, 2025",
-    tags: ["Thread", "Education", "Developers"],
-    difficulty: "Medium",
-    category: "Thread",
-    projectName: "Farcaster",
-    projectLogo: farcaster
-  },
-  {
-    id: "19",
-    title: "Thread: Base Chain DeFi Opportunities",
-    description:
-      "Write an engaging thread highlighting the current DeFi opportunities on Base Chain, including yields, risks, and protocols.",
-    reward: {
-      amount: 1300,
-      currency: "USDC",
-    },
-    deadline: "June 10, 2025",
-    tags: ["Thread", "DeFi", "Finance"],
-    difficulty: "Medium",
-    category: "Thread",
-    projectName: "Bankr",
-    projectLogo: bankr
-  },
-  {
-    id: "20",
-    title: "Thread: Base Chain NFT Ecosystem Overview",
-    description:
-      "Create a comprehensive thread showcasing the NFT ecosystem on Base Chain, including marketplaces, collections, and artists.",
-    reward: {
-      amount: 1400,
-      currency: "USDC",
-    },
-    deadline: "June 15, 2025",
-    tags: ["Thread", "NFT", "Ecosystem"],
-    difficulty: "Medium",
-    category: "Thread",
-    projectName: "Zora",
-    projectLogo: Zorapic
-  },
-  {
-    id: "21",
-    title: "Thread: Base Chain Security Best Practices",
-    description:
-      "Write a thread explaining security best practices for users and developers on Base Chain.",
-    reward: {
-      amount: 1600,
-      currency: "USDC",
-    },
-    deadline: "June 20, 2025",
-    tags: ["Thread", "Security", "Best Practices"],
-    difficulty: "Hard",
-    category: "Thread",
-    projectName: "Coinbase",
-    projectLogo: coinbase
-  },
-  {
-    id: "22",
-    title: "Thread: Base Chain Gaming Ecosystem",
-    description:
-      "Create a thread highlighting the emerging gaming ecosystem on Base Chain, including games, platforms, and opportunities.",
-    reward: {
-      amount: 1100,
-      currency: "USDC",
-    },
-    deadline: "June 25, 2025",
-    tags: ["Thread", "Gaming", "Ecosystem"],
-    difficulty: "Easy",
-    category: "Thread",
-    projectName: "Metacade",
-    projectLogo: metacade
-  },
-  {
-    id: "23",
-    title: "Develop a Base Chain Block Explorer API",
-    description:
-      "Build a robust API for accessing Base Chain block data, transaction history, and account information.",
-    reward: {
-      amount: 8000,
-      currency: "USDC",
-    },
-    deadline: "August 15, 2025",
-    tags: ["Development", "API", "Block Explorer"],
-    difficulty: "Hard",
-    category: "Development",
-    projectName: "Base",
-    projectLogo: Qrbase
-  },
-  {
-    id: "24",
-    title: "Create a Base Chain Wallet SDK",
-    description:
-      "Develop a comprehensive SDK for integrating Base Chain wallet functionality into web and mobile applications.",
-    reward: {
-      amount: 7000,
-      currency: "USDC",
-    },
-    deadline: "August 1, 2025",
-    tags: ["Development", "SDK", "Wallet"],
-    difficulty: "Hard",
-    category: "Development",
-    projectName: "Coinbase",
-    projectLogo: coinbase
-  },
-  {
-    id: "25",
-    title: "Build a Base Chain NFT Minting Tool",
-    description:
-      "Create a user-friendly tool for creators to mint and manage NFTs on Base Chain without coding knowledge.",
-    reward: {
-      amount: 5000,
-      currency: "USDC",
-    },
-    deadline: "July 20, 2025",
-    tags: ["Development", "NFT", "Tool"],
-    difficulty: "Medium",
-    category: "Development",
-    projectName: "Zora",
-    projectLogo: Zorapic
-  },
-  {
-    id: "26",
-    title: "Develop a Base Chain DeFi Dashboard",
-    description:
-      "Build a comprehensive dashboard for tracking DeFi positions, yields, and opportunities across Base Chain protocols.",
-    reward: {
-      amount: 6000,
-      currency: "USDC",
-    },
-    deadline: "July 30, 2025",
-    tags: ["Development", "DeFi", "Dashboard"],
-    difficulty: "Medium",
-    category: "Development",
-    projectName: "Bankr",
-    projectLogo: bankr
-  },
-  {
-    id: "27",
-    title: "Create a Base Chain Gaming SDK",
-    description:
-      "Develop an SDK for game developers to easily integrate Base Chain functionality into their games.",
-    reward: {
-      amount: 7500,
-      currency: "USDC",
-    },
-    deadline: "August 20, 2025",
-    tags: ["Development", "Gaming", "SDK"],
-    difficulty: "Hard",
-    category: "Development",
-    projectName: "Metacade",
-    projectLogo: metacade
-  },
-  {
-    id: "28",
-    title: "Build a Cross-Chain Asset Bridge for Base",
-    description:
-      "Develop a secure bridge for transferring assets between Base Chain and other popular blockchains.",
-    reward: {
-      amount: 9000,
-      currency: "USDC",
-    },
-    deadline: "September 1, 2025",
-    tags: ["Development", "Bridge", "Cross-Chain"],
-    difficulty: "Hard",
-    category: "Development",
-    projectName: "Send",
-    projectLogo: send
-  },
-  {
-    id: "29",
-    title: "Develop a Base Chain Social Media Integration",
-    description:
-      "Build tools and APIs for integrating Base Chain functionality into social media platforms and applications.",
-    reward: {
-      amount: 5500,
-      currency: "USDC",
-    },
-    deadline: "July 25, 2025",
-    tags: ["Development", "Social", "Integration"],
-    difficulty: "Medium",
-    category: "Development",
-    projectName: "Farcaster",
-    projectLogo: farcaster
-  },
-  {
-    id: "30",
-    title: "Write a Comprehensive Base Chain Development Guide",
-    description:
-      "Create a detailed guide covering all aspects of developing on Base Chain, from setup to deployment and maintenance.",
-    reward: {
-      amount: 4000,
-      currency: "USDC",
+      winners: 5,
+      distribution: [
+        { place: "1st", amount: 1500 },
+        { place: "2nd", amount: 800 },
+        { place: "3rd", amount: 500 },
+        { place: "4th", amount: 400 },
+        { place: "5th", amount: 300 }
+      ]
     },
     deadline: "July 10, 2025",
-    tags: ["Writeathon", "Development", "Guide"],
-    difficulty: "Hard",
-    category: "Writeathon",
-    projectName: "Base",
-    projectLogo: Qrbase
-  },
-  {
-    id: "31",
-    title: "Create a Base Chain DeFi Protocols Comparison",
-    description:
-      "Write a detailed comparison of DeFi protocols on Base Chain, including features, security, and performance.",
-    reward: {
-      amount: 3500,
-      currency: "USDC",
-    },
-    deadline: "June 30, 2025",
-    tags: ["Writeathon", "DeFi", "Comparison"],
-    difficulty: "Medium",
-    category: "Writeathon",
-    projectName: "Bankr",
-    projectLogo: bankr
-  },
-  {
-    id: "32",
-    title: "Write a Base Chain Security Best Practices Guide",
-    description:
-      "Create a comprehensive guide on security best practices for developers building on Base Chain.",
-    reward: {
-      amount: 3800,
-      currency: "USDC",
-    },
-    deadline: "July 5, 2025",
-    tags: ["Writeathon", "Security", "Best Practices"],
-    difficulty: "Hard",
-    category: "Writeathon",
-    projectName: "Coinbase",
-    projectLogo: coinbase
-  },
-  {
-    id: "33",
-    title: "Create a Base Chain NFT Creation Guide",
-    description:
-      "Write a detailed guide on creating, minting, and managing NFTs on Base Chain for artists and creators.",
-    reward: {
-      amount: 3200,
-      currency: "USDC",
-    },
-    deadline: "June 25, 2025",
-    tags: ["Writeathon", "NFT", "Guide"],
-    difficulty: "Medium",
-    category: "Writeathon",
-    projectName: "Zora",
-    projectLogo: Zorapic
-  },
-  {
-    id: "34",
-    title: "Write a Base Chain Gaming Development Guide",
-    description:
-      "Create a comprehensive guide for game developers looking to build blockchain games on Base Chain.",
-    reward: {
-      amount: 3600,
-      currency: "USDC",
-    },
-    deadline: "July 15, 2025",
-    tags: ["Writeathon", "Gaming", "Development"],
-    difficulty: "Medium",
-    category: "Writeathon",
-    projectName: "Metacade",
-    projectLogo: metacade
-  },
-  {
-    id: "35",
-    title: "Create a Base Chain for Enterprises Whitepaper",
-    description:
-      "Write a professional whitepaper explaining the benefits and implementation strategies of Base Chain for enterprise use cases.",
-    reward: {
-      amount: 4500,
-      currency: "USDC",
-    },
-    deadline: "July 30, 2025",
-    tags: ["Writeathon", "Enterprise", "Whitepaper"],
-    difficulty: "Hard",
-    category: "Writeathon",
-    projectName: "Base",
-    projectLogo: Qrbase
-  },
-  {
-    id: "36",
-    title: "Design a Base Chain Mobile Wallet UI Kit",
-    description:
-      "Create a comprehensive UI kit for mobile wallet applications built on Base Chain, including all necessary screens and components.",
-    reward: {
-      amount: 4000,
-      currency: "USDC",
-    },
-    deadline: "July 5, 2025",
-    tags: ["Design", "UI Kit", "Mobile"],
-    difficulty: "Medium",
-    category: "Design",
-    projectName: "Coinbase",
-    projectLogo: coinbase
-  },
-  {
-    id: "37",
-    title: "Create Base Chain DeFi Dashboard UI Design",
-    description:
-      "Design a beautiful and intuitive dashboard for tracking DeFi investments and opportunities on Base Chain.",
-    reward: {
-      amount: 3800,
-      currency: "USDC",
-    },
-    deadline: "June 30, 2025",
-    tags: ["Design", "Dashboard", "DeFi"],
-    difficulty: "Medium",
-    category: "Design",
-    projectName: "Bankr",
-    projectLogo: bankr
-  },
-  {
-    id: "38",
-    title: "Design Base Chain NFT Marketplace UI",
-    description:
-      "Create a modern, user-friendly UI design for an NFT marketplace built on Base Chain.",
-    reward: {
-      amount: 4200,
-      currency: "USDC",
-    },
-    deadline: "July 10, 2025",
-    tags: ["Design", "NFT", "Marketplace"],
-    difficulty: "Medium",
-    category: "Design",
-    projectName: "Zora",
-    projectLogo: Zorapic
-  },
-  {
-    id: "39",
-    title: "Create Base Chain Gaming Platform UI Design",
-    description:
-      "Design a visually appealing UI for a gaming platform built on Base Chain, including game discovery, profiles, and marketplace.",
-    reward: {
-      amount: 4500,
-      currency: "USDC",
-    },
-    deadline: "July 20, 2025",
-    tags: ["Design", "Gaming", "Platform"],
-    difficulty: "Hard",
-    category: "Design",
-    projectName: "Metacade",
-    projectLogo: metacade
-  },
-  {
-    id: "40",
-    title: "Design Base Chain Block Explorer UI",
-    description:
-      "Create a clean, intuitive UI design for a Base Chain block explorer that makes blockchain data accessible to all users.",
-    reward: {
-      amount: 3500,
-      currency: "USDC",
-    },
-    deadline: "June 25, 2025",
-    tags: ["Design", "Block Explorer", "UI"],
-    difficulty: "Medium",
-    category: "Design",
-    projectName: "Base",
-    projectLogo: Qrbase
-  },
-  {
-    id: "41",
-    title: "Create Base Chain Brand Identity System",
-    description:
-      "Design a comprehensive brand identity system for a Base Chain project, including logo, color palette, typography, and usage guidelines.",
-    reward: {
-      amount: 5000,
-      currency: "USDC",
-    },
-    deadline: "July 15, 2025",
-    tags: ["Design", "Branding", "Identity"],
-    difficulty: "Hard",
-    category: "Design",
-    projectName: "Cliza",
-    projectLogo: cliza
+    tags: ["Meme", "Doge", "NFT"],
+    category: "Meme",
+    projectName: "Own the Doge",
+    projectLogo: ownthedoge,
+    rules: [
+      "Post your meme on X with #OwnTheDogeMemeContest",
+      "Tag @OwnTheDoge and @cre8corelabs",
+      "Follow both accounts",
+      "Memes must be original, funny, and relevant to the Doge culture"
+    ]
   }
-]
+];
 
 export default function BountiesPage() {
-  const categories = ["All", "Video", "Thread", "Development", "Writeathon", "Design"]
+  const categories = ["All", "Video", "Thread", "Development", "Writeathon", "Design", "Meme"]
   const [activeCategory, setActiveCategory] = useState("All")
 
   const filteredBounties =
@@ -758,84 +530,124 @@ export default function BountiesPage() {
               <p className="text-gray-600">Design user interfaces, illustrations, graphics, and visual assets for projects building on Base Chain.</p>
             </div>
           )}
+          {activeCategory === "Meme" && (
+            <div className="bg-[#E2E2E2B2]/70 rounded-xl p-6 shadow-[inset_0_0_8px_rgba(13,83,221,0.2)]">
+              <h2 className="text-xl font-semibold mb-2">Meme Bounties</h2>
+              <p className="text-gray-600">Create original, funny, and engaging memes that promote projects and concepts in the Base ecosystem.</p>
+            </div>
+          )}
         </div>
 
         {/* Bounty Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredBounties.map((bounty) => (
-            <div key={bounty.id} className="bg-[#E2E2E2B2]/70 shadow-[inset_0_0_8px_rgba(13,83,221,0.2)] hover:shadow-[inset_0_0_12px_rgba(13,83,221,0.25)] rounded-xl p-6 transition-all duration-300">
-              {/* Project Logo and Category Badge */}
-              <div className="flex justify-between items-start mb-4">
-                <div className="flex items-center gap-2">
-                  <div className="h-8 w-8 relative rounded-full overflow-hidden">
-                    <Image 
-                      src={bounty.projectLogo} 
-                      alt={bounty.projectName} 
-                      width={32} 
-                      height={32} 
-                      className="object-cover"
-                    />
-                  </div>
-                  <span className="text-sm font-medium">{bounty.projectName}</span>
-                </div>
-                <div className="flex gap-2">
-                  <span
-                    className={`text-xs font-semibold px-2 py-1 rounded-full ${
-                      bounty.difficulty === "Easy"
-                        ? "bg-green-100 text-green-800"
-                        : bounty.difficulty === "Medium"
-                          ? "bg-yellow-100 text-yellow-800"
-                          : "bg-red-100 text-red-800"
-                    }`}
-                  >
-                    {bounty.difficulty}
-                  </span>
-                  <span
-                    className={`text-xs font-semibold px-2 py-1 rounded-full ${
-                      bounty.category === "Video"
-                        ? "bg-purple-100 text-purple-800"
-                        : bounty.category === "Thread"
-                          ? "bg-blue-100 text-blue-800"
-                          : bounty.category === "Development"
-                            ? "bg-indigo-100 text-indigo-800"
-                            : bounty.category === "Writeathon"
-                              ? "bg-green-100 text-green-800"
-                              : "bg-pink-100 text-pink-800"
-                    }`}
-                  >
-                    {bounty.category}
-                  </span>
+            <div key={bounty.id} className="bg-[#E2E2E2B2]/70 shadow-[inset_0_0_8px_rgba(13,83,221,0.2)] hover:shadow-[inset_0_0_12px_rgba(13,83,221,0.25)] rounded-xl overflow-hidden transition-all duration-300">
+              {/* Project Logo Header */}
+              <div className="relative h-48 w-full bg-gradient-to-r from-[#0D53DD]/10 to-[#0D53DD]/5 flex items-center justify-center p-4 border-b border-[#0D53DD]/10">
+                <div className="h-36 w-36 relative">
+                  <Image 
+                    src={bounty.projectLogo} 
+                    alt={bounty.projectName}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-contain"
+                    priority
+                  />
                 </div>
               </div>
               
-              <h3 className="text-xl font-semibold mb-2">{bounty.title}</h3>
-              <p className="text-sm text-gray-600 mb-4">{bounty.description}</p>
+              <div className="p-6">
+                {/* Category Badge */}
+                <div className="flex justify-between items-start mb-4">
+                  <div className="flex items-center gap-2">
+                    <span className="text-base font-medium text-[#0D53DD]">{bounty.projectName}</span>
+                  </div>
+                  <div className="flex gap-2">
+                    {bounty.difficulty && (
+                      <span
+                        className={`text-xs font-semibold px-2 py-1 rounded-full ${
+                          bounty.difficulty === "Easy"
+                            ? "bg-green-100 text-green-800"
+                            : bounty.difficulty === "Medium"
+                              ? "bg-yellow-100 text-yellow-800"
+                              : "bg-red-100 text-red-800"
+                        }`}
+                      >
+                        {bounty.difficulty}
+                      </span>
+                    )}
+                    <span
+                      className={`text-xs font-semibold px-2 py-1 rounded-full ${
+                        bounty.category === "Video"
+                          ? "bg-purple-100 text-purple-800"
+                          : bounty.category === "Thread"
+                            ? "bg-blue-100 text-blue-800"
+                            : bounty.category === "Development"
+                              ? "bg-indigo-100 text-indigo-800"
+                              : bounty.category === "Writeathon"
+                                ? "bg-green-100 text-green-800"
+                                : bounty.category === "Meme"
+                                  ? "bg-orange-100 text-orange-800"
+                                  : "bg-pink-100 text-pink-800"
+                      }`}
+                    >
+                      {bounty.category}
+                    </span>
+                  </div>
+                </div>
+                
+                <h3 className="text-xl font-semibold mb-3">{bounty.title}</h3>
+                <p className="text-sm text-gray-600 mb-4">{bounty.description}</p>
 
-              <div className="flex items-center mb-3">
-                <DollarSign className="h-4 w-4 text-[#0D53DD] mr-2" />
-                <span className="text-lg font-semibold text-[#0D53DD]">
-                  {bounty.reward.amount} {bounty.reward.currency}
-                </span>
+                {/* Prize Pool */}
+                <div className="bg-[#0D53DD]/5 rounded-lg p-3 mb-4">
+                  <div className="flex items-center mb-2">
+                    <DollarSign className="h-5 w-5 text-[#0D53DD] mr-2" />
+                    <span className="text-lg font-semibold text-[#0D53DD]">
+                      Prize Pool: {bounty.reward.amount} {bounty.reward.currency}
+                    </span>
+                  </div>
+                  
+                  {bounty.reward.winners && (
+                    <div className="flex items-center mb-2">
+                      <Trophy className="h-4 w-4 text-[#DCBD7A] mr-2" />
+                      <span className="text-sm font-medium">
+                        Winners: {bounty.reward.winners}
+                      </span>
+                    </div>
+                  )}
+                  
+                  {bounty.reward.distribution && (
+                    <div className="mt-2 space-y-1">
+                      {bounty.reward.distribution.map((prize, index) => (
+                        <div key={index} className="flex justify-between text-sm">
+                          <span>{prize.place}</span>
+                          <span className="font-medium">{prize.amount} {bounty.reward.currency}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                <div className="flex items-center mb-4">
+                  <Clock className="h-4 w-4 text-gray-500 mr-2" />
+                  <span className="text-sm text-gray-500">Deadline: {bounty.deadline}</span>
+                </div>
+
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {bounty.tags.map((tag) => (
+                    <span key={tag} className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded-full">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <Link href={`/bounties/${bounty.id}`}>
+                  <button className="w-full bg-[#0D53DD] text-white py-2.5 rounded-full hover:bg-[#0D53DD]/90 transition-colors text-sm font-medium">
+                    View Details
+                  </button>
+                </Link>
               </div>
-
-              <div className="flex items-center mb-4">
-                <Clock className="h-4 w-4 text-gray-500 mr-2" />
-                <span className="text-sm text-gray-500">Deadline: {bounty.deadline}</span>
-              </div>
-
-              <div className="flex flex-wrap gap-2 mb-4">
-                {bounty.tags.map((tag) => (
-                  <span key={tag} className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded-full">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              <Link href={`/bounties/${bounty.id}`}>
-                <button className="w-full bg-[#0D53DD] text-white py-2.5 rounded-full hover:bg-[#0D53DD]/90 transition-colors text-sm font-medium">
-                  View Details
-                </button>
-              </Link>
             </div>
           ))}
         </div>

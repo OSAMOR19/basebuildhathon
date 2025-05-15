@@ -40,14 +40,14 @@ export default function Header() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled ? "backdrop-blur-md shadow-sm py-2" : "py-4"
       }`}
-      style={{ backgroundColor: 'rgba(147, 183, 255, 0.8)' }}
+      style={{ backgroundColor: 'rgba(240, 246, 252, 0.8)' }}
     >
       <div className="max-w-[1280px] mx-auto px-6 flex items-center justify-between">
         <Link href="/" className="flex items-center">
           <div className="relative h-8 w-8 mr-2">
             <Image src="/baselogo.png" alt="Base Logo" fill className="object-contain" />
           </div>
-          <span className="text-primary font-semibold">Talent Hive</span>
+          <span className="text-primary font-semibold">Cr8CoreLabs</span>
         </Link>
 
         {/* Desktop Navigation */}

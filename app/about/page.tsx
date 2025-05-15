@@ -6,89 +6,103 @@ export default function AboutPage() {
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-extrabold mb-6 text-center">
-            About <span className="text-primary">Base</span>
+            About <span className="text-primary">Cr8CoreLabs</span>
           </h1>
 
           <div className="prose max-w-none">
             <p className="text-lg text-gray-600 mb-8">
-              Base is a secure, low-cost, builder-friendly Ethereum L2 built to bring the next billion users onchain.
-              It's built on the Optimism OP Stack, a standardized, open-source, and shared system for scaling Ethereum.
+              Cr8core Labs is a community-powered platform built on the Base blockchain, designed to solve distribution challenges in the Base ecosystem through engaging, creator-driven competitions, bounties, and job opportunities.
             </p>
-
-            <h2 className="text-2xl font-semibold mb-4">Our Mission</h2>
+            
             <p className="text-lg text-gray-600 mb-8">
-              Our mission is to create a marketplace where creators, builders, and doers get paid to ideate, contribute,
-              and earn. We believe in empowering the next generation of blockchain developers and creators by providing
-              them with the tools, resources, and opportunities they need to succeed.
+              We believe in the power of creativity and community. That's why we're building a home for creators, builders, and projects to connect, collaborate, and grow together.
             </p>
 
-            <h2 className="text-2xl font-semibold mb-4">Why Build on Base?</h2>
+            <h2 className="text-2xl font-semibold mb-4">What We Offer</h2>
+            
+            <h3 className="text-xl font-semibold mt-6 mb-3">Contests & Bounties</h3>
+            <p className="text-lg text-gray-600 mb-4">
+              We host fun and rewarding challenges across multiple categories including:
+            </p>
+            <ul className="list-disc pl-6 mb-6 space-y-2 text-gray-600">
+              <li className="text-lg">Design (UI/UX, branding, graphics)</li>
+              <li className="text-lg">Video Creation (explainer videos, content marketing)</li>
+              <li className="text-lg">Thread Writing (X/Twitter threads, blogs, educational content)</li>
+            </ul>
+            <p className="text-lg text-gray-600 mb-8">
+              Projects can list their bounties, and creators can compete to win rewards and recognition.
+            </p>
+
+            <h3 className="text-xl font-semibold mb-3">Job Board for Builders & Creators</h3>
+            <p className="text-lg text-gray-600 mb-8">
+              A dedicated space where projects on Base can list roles and opportunities — from technical gigs to community-focused roles. Whether you're a dev, designer, or marketer, there's a spot for you.
+            </p>
+
+            <h3 className="text-xl font-semibold mb-3">Grant Distribution</h3>
+            <p className="text-lg text-gray-600 mb-8">
+              We also facilitate small grants for promising contributors and initiatives that align with the Base ecosystem's growth. These grants are designed to spark innovation and give builders the support they need to get started.
+            </p>
+
+            <div className="bg-[#E2E2E2B2]/70 rounded-xl p-6 shadow-[inset_0_0_8px_rgba(13,83,221,0.2)] mt-8 mb-8">
+              <p className="text-lg font-medium text-gray-800">
+                Cr8core Labs isn't just a platform — it's a movement to supercharge distribution, creativity, and talent across Base. Whether you're a project looking to grow or a creator looking to earn and showcase your skills, Cr8core Labs is where it happens.
+              </p>
+            </div>
+
+            <h2 className="text-2xl font-semibold mb-4">Why Build on Cr8core Labs?</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-              <div className="card p-6">
-                <h3 className="text-xl font-semibold mb-2">Low Cost</h3>
+              <div className="bg-white p-6 rounded-lg shadow-md">
+                <h3 className="text-xl font-semibold mb-3">Low Cost</h3>
                 <p className="text-gray-600">
                   Base offers significantly lower transaction fees compared to Ethereum mainnet, making it more
                   accessible for developers and users.
                 </p>
               </div>
-              <div className="card p-6">
-                <h3 className="text-xl font-semibold mb-2">High Security</h3>
+              <div className="bg-white p-6 rounded-lg shadow-md">
+                <h3 className="text-xl font-semibold mb-3">Ethereum Security</h3>
                 <p className="text-gray-600">
-                  Built on the battle-tested Optimism OP Stack, Base inherits the security properties of Ethereum while
-                  scaling transaction throughput.
+                  As an Ethereum L2, Base inherits the security guarantees of Ethereum, ensuring your assets and
+                  applications are protected.
                 </p>
               </div>
-              <div className="card p-6">
-                <h3 className="text-xl font-semibold mb-2">Developer Friendly</h3>
+              <div className="bg-white p-6 rounded-lg shadow-md">
+                <h3 className="text-xl font-semibold mb-3">Developer Experience</h3>
                 <p className="text-gray-600">
-                  Base is EVM-equivalent, meaning developers can use familiar tools and languages to build on Base with
-                  minimal changes to their workflow.
+                  Base provides a seamless developer experience with familiar tools and comprehensive documentation to
+                  help you build quickly.
                 </p>
               </div>
-              <div className="card p-6">
-                <h3 className="text-xl font-semibold mb-2">Growing Ecosystem</h3>
+              <div className="bg-white p-6 rounded-lg shadow-md">
+                <h3 className="text-xl font-semibold mb-3">Ecosystem Growth</h3>
                 <p className="text-gray-600">
-                  Join a thriving community of developers, creators, and users building the future of decentralized
-                  applications on Base.
+                  Join a rapidly growing ecosystem of developers, projects, and users building the future of
+                  decentralized applications.
                 </p>
               </div>
             </div>
 
-            <h2 className="text-2xl font-semibold mb-4">Our Programs</h2>
+            <h2 className="text-2xl font-semibold mb-4">Join Our Community</h2>
             <p className="text-lg text-gray-600 mb-4">
-              We offer various programs to support builders and creators in the Base ecosystem:
+              Be part of the Cr8core Labs community and help shape the future of the Base ecosystem. Whether you're a
+              developer, creator, or enthusiast, there's a place for you.
             </p>
-            <ul className="list-disc pl-6 mb-8 space-y-2">
-              <li className="text-gray-600">
-                <strong>Hackathons:</strong> Regular hackathons with prizes and mentorship to encourage innovation.
-              </li>
-              <li className="text-gray-600">
-                <strong>Bounties:</strong> Specific tasks with rewards for contributors to help improve the ecosystem.
-              </li>
-              <li className="text-gray-600">
-                <strong>Grants:</strong> Financial support for promising projects building on Base.
-              </li>
-              <li className="text-gray-600">
-                <strong>Educational Resources:</strong> Tutorials, documentation, and workshops to help developers get
-                started.
-              </li>
-            </ul>
-
-            <h2 className="text-2xl font-semibold mb-4">Join the Community</h2>
-            <p className="text-lg text-gray-600 mb-6">
-              Become part of the Base community and connect with other builders, creators, and enthusiasts.
-            </p>
-
-            <div className="flex flex-wrap gap-4 justify-center mb-8">
-              <Link href="https://twitter.com/base" className="btn-primary">
-                Twitter
-              </Link>
-              <Link href="https://discord.gg/base" className="btn-primary">
-                Discord
-              </Link>
-              <Link href="https://github.com/base" className="btn-primary">
-                GitHub
-              </Link>
+            <div className="flex flex-wrap gap-4 mb-8">
+              <a
+                href="https://twitter.com/cre8corelabs"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-[#0D53DD] text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-[#0D53DD]/90 transition-colors"
+              >
+                Follow on X
+              </a>
+              <a
+                href="https://discord.gg/cre8corelabs"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-[#5865F2] text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-[#5865F2]/90 transition-colors"
+              >
+                Join Discord
+              </a>
             </div>
           </div>
         </div>

@@ -81,17 +81,7 @@ export default function HeroSection() {
       className="relative w-full h-full overflow-hidden mt-0 px-0"
       ref={containerRef}
     >
-      {/* Background */}
-      <div className="absolute inset-0  z-0 min-h-screen w-full">
-        <Image 
-          src={background} 
-          alt="Background Wave" 
-          fill
-          sizes="100vw"
-          className="object-cover opacity-60"
-          priority
-        />
-      </div>
+      
 
       {/* Content Container */}
       <div className="relative z-10 max-w-[1280px] mx-auto min-h-[650px] sm:min-h-[650px] flex flex-col justify-center px-6 md:px-12 lg:px-16 py-24 md:py-28">
@@ -112,16 +102,7 @@ export default function HeroSection() {
                     transition: { duration: 5, repeat: Infinity }
                   }}
                 >
-                  Earn
-                </motion.span> on{" "}
-                <motion.span 
-                  className="text-[#DCBD7A]"
-                  animate={{ 
-                    scale: [1, 1.05, 1],
-                    transition: { duration: 2, repeat: Infinity }
-                  }}
-                >
-                  Base
+                  Cr8Core Labs
                 </motion.span>
               </motion.h1>
             </div>
@@ -132,9 +113,9 @@ export default function HeroSection() {
                 initial="hidden"
                 animate="visible"
                 variants={textVariants}
-                className="text-4xl sm:text-5xl md:text-6xl font-bold mb-2 leading-tight"
+                className="text-4xl sm:text-3xl md:text-4xl font-bold mb-2 leading-tight"
               >
-                doing what you do
+                Fueling the Creative Layer of 
               </motion.h1>
             </div>
             
@@ -146,7 +127,7 @@ export default function HeroSection() {
                 variants={textVariants}
                 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight"
               >
-                best
+               Base
               </motion.h1>
             </div>
 
@@ -157,7 +138,8 @@ export default function HeroSection() {
               variants={textVariants}
               className="text-base md:text-lg max-w-md mb-8"
             >
-              A market place where creators, builders, & degen thinkers get paid to create, contribute & engage
+              ONE PLATFORM, INFINITE CAMPAIGNS
+              ALL ON BASE
             </motion.p>
 
             <motion.div

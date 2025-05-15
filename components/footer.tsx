@@ -1,6 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
 
+
 export default function Footer() {
   return (
     <footer className="bg-[#E9ECEF] py-16">
@@ -135,10 +136,10 @@ export default function Footer() {
               <div className="relative h-8 w-8 mr-2">
                 <Image src="/baselogo.png" alt="Base Logo" fill className="object-contain" />
               </div>
-              <span className="text-[#495057] font-semibold">Logo</span>
+              <span className="text-[#495057] font-semibold">Cr8CoreLabs</span>
             </Link>
           </div>
-          <p className="text-sm text-[#6C757D]">&copy; 2025, Base all right reserved</p>
+          <p className="text-sm text-[#6C757D]">&copy; 2025, Cr8CoreLabs all right reserved</p>
         </div>
       </div>
     </footer>
