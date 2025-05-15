@@ -1,5 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
+import logo from "@/components/images/creatcorelogo.png"
 
 
 export default function Footer() {
@@ -133,8 +134,8 @@ export default function Footer() {
         <div className="border-t border-[#CED4DA] pt-8 flex flex-col sm:flex-row justify-between items-center">
           <div className="mb-4 sm:mb-0">
             <Link href="/" className="flex items-center">
-              <div className="relative h-8 w-8 mr-2">
-                <Image src="/baselogo.png" alt="Base Logo" fill className="object-contain" />
+              <div className="relative h-14 w-14 mr-1">
+                <Image src={logo} alt="Base Logo" fill className="object-contain" />
               </div>
               <span className="text-[#495057] font-semibold">Cr8CoreLabs</span>
             </Link>

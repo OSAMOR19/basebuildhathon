@@ -8,12 +8,13 @@ import metacade from "@/components/images/metacade.jpg"
 import farcaster from "@/components/images/farcaster.jpg"
 import coinbase from "@/components/images/coinbasewallet.jpg"
 import Qrbase from "@/components/images/qrbase.jpg"
+import baselogo from "@/components/images/baselogoblue.jpg"
 import send from "@/components/images/send.jpg"
 import cliza from "@/components/images/cliza.jpg"
 import bankr from "@/components/images/bankrbot.jpg"
 import ohara from "@/components/images/ohara.jpg" // Assuming this exists, add if needed
 import metopia from "@/components/images/metopia.jpg" // Assuming this exists, add if needed
-import predictbase from "@/components/images/predictbase.png" // Assuming this exists, add if needed
+import predictbase from "@/components/images/predictbaselogo.jpg" // Assuming this exists, add if needed
 import ownthedoge from "@/components/images/ownthedodge.jpg" // Assuming this exists, add if needed
 import Image from "next/image"
 import Link from "next/link"
@@ -167,7 +168,7 @@ const bountiesData: BountyData[] = [
     tags: ["Video", "Onboarding", "Tutorial"],
     category: "Video",
     projectName: "Base",
-    projectLogo: Qrbase,
+    projectLogo: baselogo,
     rules: [
       "Video length: 1–2 minutes",
       "Must onboard at least 3 people",
