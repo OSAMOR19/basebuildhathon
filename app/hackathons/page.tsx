@@ -4,138 +4,77 @@ import { useState } from "react"
 import FilterTabs from "@/components/filter-tabs"
 import HackathonCard from "@/components/hackathon-card"
 import type { HackathonCardProps } from "@/components/hackathon-card"
+import Image from "next/image"
+import cliza from "@/components/images/cliza.jpg"
+import bankr from "@/components/images/bankrbot.jpg"
+import ohara from "@/components/images/ohara.jpg" 
+import Qrbase from "@/components/images/qrbase.jpg"
+import baselogo from "@/components/images/baselogoblue.jpg"
 
 // Sample data - in a real app, this would come from an API
 const allHackathons: HackathonCardProps[] = [
   {
     id: "1",
-    date: "April 23, 2025",
-    title: "Base x Titan Blockchain Hackathon",
+    date: "June 15, 2025",
+    title: "Cliza DeFi Innovation Hackathon",
     description:
-      "A 3-hour, hands-on hackathon powered by OnchainKit and Base, designed for participants from various backgrounds—including designers, marketers, and students—to build onchain applications using AI tools. The event emphasizes creativity over coding expertise, encouraging projects with minimal code.",
-    reward: {
-      amount: 1500,
-      currency: "USDC",
-    },
-    location: "California state university, Fullerton, USA",
-    imageUrl: "/placeholder.svg?height=80&width=80",
-  },
-  {
-    id: "2",
-    date: "April 23, 2025",
-    title: "RugPull survivor hack-DeFi defense buildaton",
-    description: "Build tools that detect scams, simulate transactions, auto-flag suspicious projects",
+      "Join Cliza for a 2-day hackathon focused on building innovative DeFi solutions on Base. Open to developers of all skill levels with mentorship opportunities and networking with the Cliza team.",
     reward: {
       amount: 2500,
       currency: "USDC",
     },
-    location: "Kenya, India, Thailand, Singapore, Philippines, and virtually in Buenos Aires",
-    imageUrl: "/placeholder.svg?height=80&width=80",
+    location: "Virtual",
+    imageUrl: cliza,
   },
   {
-    id: "3",
-    date: "April 23, 2025",
-    title: "Modular World-Base x OP Stack Challenge",
-    description:
-      "A 3-hour, hands-on hackathon powered by OnchainKit and Base, designed for participants from various backgrounds.",
+    id: "2",
+    date: "July 10, 2025",
+    title: "Ohara NFT Marketplace Buildathon",
+    description: "Create next-generation NFT marketplace solutions with Ohara. This hackathon focuses on building user-friendly interfaces and innovative features for NFT trading on Base.",
     reward: {
       amount: 3000,
       currency: "USDC",
     },
-    location: "Virtual",
-    imageUrl: "/placeholder.svg?height=80&width=80",
+    location: "New York City, USA",
+    imageUrl: ohara,
+  },
+  {
+    id: "3",
+    date: "August 5, 2025",
+    title: "Bankr Base DeFi Challenge",
+    description:
+      "Bankr invites developers to build financial applications on Base that solve real-world banking problems. Focus areas include lending protocols, payment solutions, and financial inclusion.",
+    reward: {
+      amount: 4000,
+      currency: "USDC",
+    },
+    location: "London, UK",
+    imageUrl: bankr,
   },
   {
     id: "4",
-    date: "May 5-6, 2025",
-    title: "Paris Blockchain Week Hackathon 2025",
+    date: "September 20, 2025",
+    title: "QR Base Web3 Identity Hackathon",
     description:
-      "This hybrid hackathon invites developers worldwide to create decentralized applications (dApps) that address real-world problems. Participants will engage in online challenges leading up to an intensive in-person event in Paris, culminating in presentations to industry leaders and blockchain experts.",
-    reward: {
-      amount: 100,
-      currency: "ETH in total",
-    },
-    location: "Paris, France",
-    imageUrl: "/placeholder.svg?height=80&width=80",
-  },
-  {
-    id: "5",
-    date: "May 23, 2025",
-    title: "Penn Blockchain Conference",
-    description:
-      "An annual hackathon hosted by the Penn Blockchain Conference, inviting developers, designers, and entrepreneurs to build innovative blockchain solutions. The event includes mentorship, workshops, and opportunities to present projects to industry leaders.",
-    reward: {
-      amount: 1500,
-      currency: "USDC",
-    },
-    location: "New York City, USA",
-    imageUrl: "/placeholder.svg?height=80&width=80",
-  },
-  {
-    id: "6",
-    date: "June 23, 2025",
-    title: "Base x Titan Blockchain Hackathon",
-    description:
-      "A 3-hour, hands-on hackathon powered by OnchainKit and Base, designed for participants from various backgrounds—including designers, marketers, and students—to build onchain applications using AI tools. The event emphasizes creativity over coding expertise, encouraging projects with minimal code.",
-    reward: {
-      amount: 20000,
-      currency: "USDC",
-    },
-    location: "Toronto, Canada",
-    imageUrl: "/placeholder.svg?height=80&width=80",
-  },
-  {
-    id: "7",
-    date: "January 14-16, 2025",
-    title: "Consensus 2025 Hackathon",
-    description:
-      "As part of North America's largest blockchain conference, this three-day hackathon gathers top developers to build groundbreaking Web3 projects. Participants will have opportunities to pitch to leading investors, receive mentorship, and compete for substantial prizes.",
+      "Join QR Base to build innovative identity solutions using QR technology on the Base blockchain. Create applications that bridge physical and digital identity verification in a secure, decentralized manner.",
     reward: {
       amount: 2000,
       currency: "USDC",
     },
-    location: "Toronto, Canada",
-    imageUrl: "/placeholder.svg?height=80&width=80",
-  },
-  {
-    id: "8",
-    date: "January 23, 2025",
-    title: "ETHGlobal New York 2025",
-    description:
-      "A 3-hour, hands-on hackathon powered by OnchainKit and Base, designed for participants from various backgrounds—including designers, marketers, and students—to build onchain applications using AI tools. The event emphasizes creativity over coding expertise, encouraging projects with minimal code.",
-    reward: {
-      amount: 15000,
-      currency: "USDC",
-    },
-    location: "Hybrid (Online and Panama City, Panama)",
-    imageUrl: "/placeholder.svg?height=80&width=80",
-  },
-  {
-    id: "9",
-    date: "March 4, 2025",
-    title: "Blockchain Hackathon 2025 – Tashkent",
-    description:
-      "A 10 hour intensive hackathon where participants develop decentralized applications. The event offers mentorship from blockchain experts and a prize fund of 100,000,000 UZS, encouraging innovation in the blockchain space.",
-    reward: {
-      amount: 1500,
-      currency: "USDC",
-    },
-    location: "Tashkent, Uzbekistan",
-    imageUrl: "/placeholder.svg?height=80&width=80",
+    location: "Virtual",
+    imageUrl: Qrbase,
   },
 ]
 
 export default function HackathonsPage() {
   const [activeFilter, setActiveFilter] = useState("All")
-  const categories = ["All", "Upcoming", "Ongoing", "Past", "Virtual", "In-Person"]
+  const categories = ["All", "Virtual", "In-Person"]
 
   // Filter hackathons based on selected category
-  // This is a simplified example - in a real app, you would have more sophisticated filtering
   const filteredHackathons = allHackathons.filter((hackathon) => {
     if (activeFilter === "All") return true
     if (activeFilter === "Virtual") return hackathon.location.toLowerCase().includes("virtual")
     if (activeFilter === "In-Person") return !hackathon.location.toLowerCase().includes("virtual")
-    // For upcoming, ongoing, past - in a real app you would compare dates
     return true
   })
 
@@ -143,10 +82,9 @@ export default function HackathonsPage() {
     <div className="pt-20">
       <div className="max-w-[1280px] mx-auto px-6 py-12">
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-4">Hackathons on BASE</h1>
+          <h1 className="text-4xl md:text-5xl font-extrabold mb-4">Featured Partner Hackathons</h1>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Join exciting hackathons, build innovative projects, and win rewards while contributing to the Base
-            ecosystem.
+            Exclusive hackathons from our premier partners: Cliza, Ohara, Bankr Base, and QR Base. Build innovative projects and win rewards.
           </p>
         </div>
 

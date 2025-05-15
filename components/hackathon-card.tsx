@@ -12,7 +12,7 @@ export interface HackathonCardProps {
     currency: string
   }
   location: string
-  imageUrl: string
+  imageUrl: any
 }
 
 export default function HackathonCard({
