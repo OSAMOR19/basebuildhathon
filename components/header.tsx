@@ -7,6 +7,7 @@ import { ChevronDown, Menu, X, LogOut } from "lucide-react"
 import { PrivyConnectButton } from "./privy-connect-button"
 import Profileicon from "@/components/images/baseavatar1.svg"
 import { usePrivy } from "@privy-io/react-auth"
+import logo from "@/components/images/creatcorelogo.png"
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -44,8 +45,8 @@ export default function Header() {
     >
       <div className="max-w-[1280px] mx-auto px-6 flex items-center justify-between">
         <Link href="/" className="flex items-center">
-          <div className="relative h-8 w-8 mr-2">
-            <Image src="/baselogo.png" alt="Base Logo" fill className="object-contain" />
+          <div className="relative h-14 w-14 mr-1">
+            <Image src={logo} alt="Base Logo" fill className="object-contain" />
           </div>
           <span className="text-primary font-semibold">Cr8CoreLabs</span>
         </Link>
